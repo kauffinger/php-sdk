@@ -8,8 +8,9 @@
     "psr/log": "^3.0"
   },
   "require-dev": {
-    "symfony/debug": "^4.4",
-    "phpunit/phpunit": "^10.0"
+    "symfony/error-handler": "^6.3",
+    "phpunit/phpunit": "^10.0",
+    "laravel/pint": "^1.12"
   },
   "suggest": {
     "monolog/monolog": "~1.7"
