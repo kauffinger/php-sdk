@@ -12,6 +12,18 @@ jobs:
         with:
           args: --ignore-platform-reqs
 
+      - name: PHP 8.0
+        uses: php-actions/phpunit@v3
+        with:
+          version: 10
+          php_version: 8.2
+
+      - name: PHP 8.1
+        uses: php-actions/phpunit@v3
+        with:
+          version: 10
+          php_version: 8.2
+
       - name: PHP 8.2
         uses: php-actions/phpunit@v3
         with:
