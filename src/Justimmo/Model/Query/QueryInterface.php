@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Model\Query;
 
 interface QueryInterface

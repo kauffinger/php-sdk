@@ -12,8 +12,6 @@ use Psr\Log\NullLogger;
 /**
  * Class JustimmoApi
  * class for justimmo api
- *
- * @package Justimmo\Api
  */
 class JustimmoApi implements JustimmoApiInterface
 {
@@ -22,7 +20,7 @@ class JustimmoApi implements JustimmoApiInterface
      *
      * @var array
      */
-    protected $supportedVersions = array('v1');
+    protected $supportedVersions = ['v1'];
 
     /**
      * base url where the justimmo api is located
@@ -78,20 +76,17 @@ class JustimmoApi implements JustimmoApiInterface
      *
      * @var array
      */
-    protected $curlOptions = array(
+    protected $curlOptions = [
         CURLOPT_CONNECTTIMEOUT_MS => 2500,
-        CURLOPT_RETURNTRANSFER    => true,
-        CURLOPT_SSL_VERIFYPEER    => false,
-    );
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+    ];
 
     /**
-     *
-     * @param                 $username
-     * @param                 $password
-     * @param LoggerInterface $logger
-     * @param CacheInterface  $cache
-     * @param string          $version
-     * @param string          $culture
+     * @param  LoggerInterface  $logger
+     * @param  CacheInterface  $cache
+     * @param  string  $version
+     * @param  string  $culture
      */
     public function __construct($username, $password, LoggerInterface $logger = null, CacheInterface $cache = null, $version = 'v1', $culture = 'de')
     {
@@ -105,9 +100,9 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callRealtyList(array $params = array())
+    public function callRealtyList(array $params = [])
     {
         $params['showDetails'] = 1;
 
@@ -115,17 +110,17 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callRealtyIds(array $params = array())
+    public function callRealtyIds(array $params = [])
     {
         return $this->call('objekt/ids', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callRealtyDetail($pk, array $params = array())
+    public function callRealtyDetail($pk, array $params = [])
     {
         $params['objekt_id'] = $pk;
 
@@ -133,17 +128,17 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function callEmployeeDetail($pk)
     {
-        return $this->call('team/detail', array('id' => $pk));
+        return $this->call('team/detail', ['id' => $pk]);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callProjectDetail($pk, array $params = array())
+    public function callProjectDetail($pk, array $params = [])
     {
         $params['id'] = $pk;
 
@@ -151,105 +146,105 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callEmployeeList(array $params = array())
+    public function callEmployeeList(array $params = [])
     {
         return $this->call('team/list', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callProjectList(array $params = array())
+    public function callProjectList(array $params = [])
     {
         return $this->call('projekt/list', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callCountries(array $params = array())
+    public function callCountries(array $params = [])
     {
         return $this->call('objekt/laender', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callFederalStates(array $params = array())
+    public function callFederalStates(array $params = [])
     {
         return $this->call('objekt/bundeslaender', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callZipCodes(array $params = array())
+    public function callZipCodes(array $params = [])
     {
         return $this->call('objekt/plzsUndOrte', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callRegions(array $params = array())
+    public function callRegions(array $params = [])
     {
         return $this->call('objekt/regionen', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callRealtyTypes(array $params = array())
+    public function callRealtyTypes(array $params = [])
     {
         return $this->call('objekt/objektarten', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callRealtyCategories(array $params = array())
+    public function callRealtyCategories(array $params = [])
     {
         return $this->call('objekt/kategorien', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callTenant(array $params = array())
+    public function callTenant(array $params = [])
     {
         return $this->call('main/tenant', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function callExpose($pk, $type = 'Default')
     {
-        return $this->call('objekt/expose', array('objekt_id' => $pk, 'expose' => $type));
+        return $this->call('objekt/expose', ['objekt_id' => $pk, 'expose' => $type]);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function postRealtyInquiry(array $params = array())
+    public function postRealtyInquiry(array $params = [])
     {
         return $this->call('objekt/anfrage', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callEmployeeIds(array $params = array())
+    public function callEmployeeIds(array $params = [])
     {
         return $this->call('team/ids', $params);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function callProjectIds(array $params = array())
+    public function callProjectIds(array $params = [])
     {
         return $this->call('projekt/ids', $params);
     }
@@ -257,18 +252,16 @@ class JustimmoApi implements JustimmoApiInterface
     /**
      * generates a url for an api request
      *
-     * @param       $call
-     * @param array $params
      *
      * @return string
      */
-    public function generateUrl($call, array $params = array())
+    public function generateUrl($call, array $params = [])
     {
-        $url = $this->baseUrl . '/' . $this->version . '/' . $call;
+        $url = $this->baseUrl.'/'.$this->version.'/'.$call;
         if (count($params) > 0) {
             $queryString = http_build_query($params, '', '&');
             $queryString = preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', $queryString);
-            $url .= '?' . $queryString;
+            $url .= '?'.$queryString;
         }
 
         return $url;
@@ -277,59 +270,57 @@ class JustimmoApi implements JustimmoApiInterface
     /**
      * Makes a call to the justimmo api
      *
-     * @param $call
-     * @param array $params
      *
      * @return mixed
      */
-    public function call($call, array $params = array())
+    public function call($call, array $params = [])
     {
         $startTime = microtime(true);
 
-        if (!array_key_exists('culture', $params)) {
+        if (! array_key_exists('culture', $params)) {
             $params['culture'] = $this->culture;
         }
 
         $url = $this->generateUrl($call, $params);
-        $this->logger->debug('call start', array(
-            'url'      => $url,
-        ));
+        $this->logger->debug('call start', [
+            'url' => $url,
+        ]);
 
         $key = $this->cache->generateCacheKey($url);
         $content = $this->cache->get($key);
         if ($content !== false) {
-            $this->logger->debug('call end', array(
-                'url'      => $url,
-                'cache'    => true,
-                'time'     => microtime(true) - $startTime,
+            $this->logger->debug('call end', [
+                'url' => $url,
+                'cache' => true,
+                'time' => microtime(true) - $startTime,
                 'response' => $content,
-            ));
+            ]);
 
             return $content;
         }
 
         $request = $this->createRequest($url);
 
-        if (!ini_get('open_basedir') && filter_var(ini_get('safe_mode'), FILTER_VALIDATE_BOOLEAN) === false) {
+        if (! ini_get('open_basedir') && filter_var(ini_get('safe_mode'), FILTER_VALIDATE_BOOLEAN) === false) {
             $request->setOption(CURLOPT_FOLLOWLOCATION, true);
         }
 
         $response = $request->get();
 
         if ($request->getError()) {
-            $this->throwError('The Api call returned an error: "' . $request->getError() . '"');
+            $this->throwError('The Api call returned an error: "'.$request->getError().'"');
         }
 
         if ($request->getStatusCode() == 401) {
-            $this->throwError('Bad Username / Password ' . $request->getStatusCode(), '\Justimmo\Exception\AuthenticationException');
+            $this->throwError('Bad Username / Password '.$request->getStatusCode(), '\Justimmo\Exception\AuthenticationException');
         }
 
         if ($request->getStatusCode() == 404) {
-            $this->throwError('Api call not found: ' . $request->getStatusCode(), '\Justimmo\Exception\NotFoundException');
+            $this->throwError('Api call not found: '.$request->getStatusCode(), '\Justimmo\Exception\NotFoundException');
         }
 
         if ($request->getStatusCode() >= 400 && $request->getStatusCode() < 500) {
-            $exception = new InvalidRequestException('The Api call returned status code ' . $request->getStatusCode());
+            $exception = new InvalidRequestException('The Api call returned status code '.$request->getStatusCode());
             $exception->setResponse($request->getContent());
             $this->logger->error($exception->getMessage());
 
@@ -337,17 +328,17 @@ class JustimmoApi implements JustimmoApiInterface
         }
 
         if ($request->getStatusCode() != 200) {
-            $this->throwError('The Api call returned status code ' . $request->getStatusCode(), '\Justimmo\Exception\StatusCodeException');
+            $this->throwError('The Api call returned status code '.$request->getStatusCode(), '\Justimmo\Exception\StatusCodeException');
         }
 
         $this->cache->set($key, $response);
 
-        $this->logger->debug('call end', array(
-            'url'      => $url,
-            'cache'    => false,
-            'time'     => microtime(true) - $startTime,
+        $this->logger->debug('call end', [
+            'url' => $url,
+            'cache' => false,
+            'time' => microtime(true) - $startTime,
             'response' => $response,
-        ));
+        ]);
 
         return $response;
     }
@@ -355,8 +346,7 @@ class JustimmoApi implements JustimmoApiInterface
     /**
      * throws and logs an error
      *
-     * @param $message
-     * @param string $exceptionClass
+     * @param  string  $exceptionClass
      *
      * @throws \InvalidArgumentException
      */
@@ -367,8 +357,7 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param string $baseUrl
-     *
+     * @param  string  $baseUrl
      * @return $this
      */
     public function setBaseUrl($baseUrl)
@@ -387,8 +376,7 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param string $password
-     *
+     * @param  string  $password
      * @return $this
      */
     public function setPassword($password)
@@ -411,8 +399,7 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param string $username
-     *
+     * @param  string  $username
      * @return $this
      */
     public function setUsername($username)
@@ -435,14 +422,13 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param string $version
-     *
+     * @param  string  $version
      * @return $this
      */
     public function setVersion($version)
     {
-        if (!in_array($version, $this->supportedVersions)) {
-            $this->throwError('The version ' . $version . ' is not supported by this library');
+        if (! in_array($version, $this->supportedVersions)) {
+            $this->throwError('The version '.$version.' is not supported by this library');
         }
 
         $this->version = $version;
@@ -459,8 +445,6 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param \Psr\Log\LoggerInterface $logger
-     *
      * @return $this
      */
     public function setLogger(LoggerInterface $logger)
@@ -471,8 +455,6 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param \Justimmo\Cache\CacheInterface $cache
-     *
      * @return $this
      */
     public function setCache(CacheInterface $cache)
@@ -483,8 +465,7 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function setCulture($value)
@@ -503,8 +484,7 @@ class JustimmoApi implements JustimmoApiInterface
     }
 
     /**
-     * @param array $curlOptions
-     *
+     * @param  array  $curlOptions
      * @return $this
      */
     public function setCurlOptions($curlOptions)
@@ -517,8 +497,6 @@ class JustimmoApi implements JustimmoApiInterface
     /**
      * sets a specific option for curl requests
      *
-     * @param $key
-     * @param $value
      *
      * @return $this
      */
@@ -531,9 +509,9 @@ class JustimmoApi implements JustimmoApiInterface
 
     protected function createRequest($url)
     {
-        return new CurlRequest($url, array(
-                CURLOPT_USERPWD        => $this->username . ':' . $this->password,
-                CURLOPT_HTTPAUTH       => CURLAUTH_ANY,
-            ) + $this->curlOptions);
+        return new CurlRequest($url, [
+            CURLOPT_USERPWD => $this->username.':'.$this->password,
+            CURLOPT_HTTPAUTH => CURLAUTH_ANY,
+        ] + $this->curlOptions);
     }
 }

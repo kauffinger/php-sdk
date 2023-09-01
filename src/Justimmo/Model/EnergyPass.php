@@ -15,7 +15,7 @@ class EnergyPass
     protected $validUntil = null;
 
     /**
-     * @var double
+     * @var float
      */
     protected $thermalHeatRequirementValue = null;
 
@@ -25,7 +25,7 @@ class EnergyPass
     protected $thermalHeatRequirementClass = null;
 
     /**
-     * @var double
+     * @var float
      */
     protected $energyEfficiencyFactorValue = null;
 
@@ -35,8 +35,7 @@ class EnergyPass
     protected $energyEfficiencyFactorClass = null;
 
     /**
-     * @param mixed $epart
-     *
+     * @param  mixed  $epart
      * @return $this
      */
     public function setEpart($epart)
@@ -55,8 +54,6 @@ class EnergyPass
     }
 
     /**
-     * @param null $fgeeKlasse
-     *
      * @return $this
      */
     public function setEnergyEfficiencyFactorClass($fgeeKlasse)
@@ -66,17 +63,12 @@ class EnergyPass
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getEnergyEfficiencyFactorClass()
     {
         return $this->energyEfficiencyFactorClass;
     }
 
     /**
-     * @param null $fgeeWert
-     *
      * @return $this
      */
     public function setEnergyEfficiencyFactorValue($fgeeWert)
@@ -86,17 +78,12 @@ class EnergyPass
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getEnergyEfficiencyFactorValue()
     {
         return $this->energyEfficiencyFactorValue;
     }
 
     /**
-     * @param null $gueltigBis
-     *
      * @return $this
      */
     public function setValidUntil($gueltigBis)
@@ -107,8 +94,7 @@ class EnergyPass
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|null
      */
     public function getValidUntil($format = 'Y-m-d')
@@ -121,8 +107,6 @@ class EnergyPass
     }
 
     /**
-     * @param null $hwbKlasse
-     *
      * @return $this
      */
     public function setThermalHeatRequirementClass($hwbKlasse)
@@ -132,17 +116,12 @@ class EnergyPass
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getThermalHeatRequirementClass()
     {
         return $this->thermalHeatRequirementClass;
     }
 
     /**
-     * @param null $hwbWert
-     *
      * @return $this
      */
     public function setThermalHeatRequirementValue($hwbWert)
@@ -152,12 +131,8 @@ class EnergyPass
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getThermalHeatRequirementValue()
     {
         return $this->thermalHeatRequirementValue;
     }
-
 }

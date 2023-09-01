@@ -64,13 +64,11 @@ class RealtyInquiryRequest implements RequestInterface
 
     public function __construct(JustimmoApiInterface $api, MapperInterface $mapper)
     {
-        $this->api    = $api;
+        $this->api = $api;
         $this->mapper = $mapper;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setEmail($value)
@@ -80,17 +78,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setFirstName($value)
@@ -100,17 +93,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getFirstName()
     {
         return $this->firstName;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setLastName($value)
@@ -120,17 +108,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getLastName()
     {
         return $this->lastName;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setMessage($value)
@@ -140,17 +123,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getMessage()
     {
         return $this->message;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setPhone($value)
@@ -160,17 +138,13 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getPhone()
     {
         return $this->phone;
     }
 
     /**
-     * @param mixed $value
-     *
+     * @param  mixed  $value
      * @return $this
      */
     public function setRealtyId($value)
@@ -188,17 +162,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this->realtyId;
     }
 
-    /**
-     * @return null
-     */
     public function getZipCode()
     {
         return $this->zipCode;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setZipCode($value)
@@ -208,17 +177,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getStreet()
     {
         return $this->street;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setStreet($value)
@@ -228,17 +192,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getCountry()
     {
         return $this->country;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setCountry($value)
@@ -248,17 +207,12 @@ class RealtyInquiryRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getCity()
     {
         return $this->city;
     }
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
     public function setCity($value)
@@ -285,7 +239,7 @@ class RealtyInquiryRequest implements RequestInterface
     }
 
     /**
-     * @param string $title
+     * @param  string  $title
      */
     public function setTitle($title)
     {
@@ -295,7 +249,7 @@ class RealtyInquiryRequest implements RequestInterface
     }
 
     /**
-     * @param int $salutationId
+     * @param  int  $salutationId
      */
     public function setSalutationId($salutationId)
     {
@@ -305,7 +259,7 @@ class RealtyInquiryRequest implements RequestInterface
     }
 
     /**
-     * @param string $category
+     * @param  string  $category
      */
     public function setCategory($category)
     {
@@ -323,7 +277,7 @@ class RealtyInquiryRequest implements RequestInterface
     }
 
     /**
-     * @param bool $isRealtyOwner
+     * @param  bool  $isRealtyOwner
      */
     public function setIsRealtyOwner($isRealtyOwner)
     {
@@ -341,7 +295,7 @@ class RealtyInquiryRequest implements RequestInterface
     }
 
     /**
-     * @param bool $realtyOwnerConsultationRequest
+     * @param  bool  $realtyOwnerConsultationRequest
      */
     public function setRealtyOwnerConsultationRequest($realtyOwnerConsultationRequest)
     {
@@ -359,8 +313,8 @@ class RealtyInquiryRequest implements RequestInterface
     }
 
     /**
-     * @param int[] $newsletter           An array of newsletter category ids of justimmo
-     * @param bool  $doubleoptinCompleted Wether a double optin has a already been completed.
+     * @param  int[]  $newsletter           An array of newsletter category ids of justimmo
+     * @param  bool  $doubleoptinCompleted Wether a double optin has a already been completed.
      *                                    If false, JUSTIMMO will handle double optin and send an email to the contact automatically
      */
     public function registerForNewsletter(array $newsletter, bool $doubleoptinCompleted)
@@ -370,24 +324,24 @@ class RealtyInquiryRequest implements RequestInterface
 
     public function send()
     {
-        $this->api->postRealtyInquiry(array(
-            $this->mapper->getFilterPropertyName('realtyId')     => $this->getRealtyId(),
-            $this->mapper->getFilterPropertyName('firstName')    => $this->getFirstName(),
-            $this->mapper->getFilterPropertyName('lastName')     => $this->getLastName(),
-            $this->mapper->getFilterPropertyName('email')        => $this->getEmail(),
-            $this->mapper->getFilterPropertyName('phone')        => $this->getPhone(),
-            $this->mapper->getFilterPropertyName('message')      => $this->getMessage(),
-            $this->mapper->getFilterPropertyName('street')       => $this->getStreet(),
-            $this->mapper->getFilterPropertyName('zipCode')      => $this->getZipCode(),
-            $this->mapper->getFilterPropertyName('city')         => $this->getCity(),
-            $this->mapper->getFilterPropertyName('country')      => $this->getCountry(),
-            $this->mapper->getFilterPropertyName('title')        => $this->getTitle(),
+        $this->api->postRealtyInquiry([
+            $this->mapper->getFilterPropertyName('realtyId') => $this->getRealtyId(),
+            $this->mapper->getFilterPropertyName('firstName') => $this->getFirstName(),
+            $this->mapper->getFilterPropertyName('lastName') => $this->getLastName(),
+            $this->mapper->getFilterPropertyName('email') => $this->getEmail(),
+            $this->mapper->getFilterPropertyName('phone') => $this->getPhone(),
+            $this->mapper->getFilterPropertyName('message') => $this->getMessage(),
+            $this->mapper->getFilterPropertyName('street') => $this->getStreet(),
+            $this->mapper->getFilterPropertyName('zipCode') => $this->getZipCode(),
+            $this->mapper->getFilterPropertyName('city') => $this->getCity(),
+            $this->mapper->getFilterPropertyName('country') => $this->getCountry(),
+            $this->mapper->getFilterPropertyName('title') => $this->getTitle(),
             $this->mapper->getFilterPropertyName('salutationId') => $this->getSalutationId(),
-            $this->mapper->getFilterPropertyName('category')     => $this->getCategory(),
-            'newsletter'                                         => $this->newsletter,
-            'doubleoptin_completed'                              => $this->doubleoptinCompleted ? '1' : '0',
-            'is_realty_owner'                                    => $this->isRealtyOwner ? '1' : '0',
-            'realty_owner_consultation_request'                  => $this->realtyOwnerConsultationRequest ? '1' : '0',
-        ));
+            $this->mapper->getFilterPropertyName('category') => $this->getCategory(),
+            'newsletter' => $this->newsletter,
+            'doubleoptin_completed' => $this->doubleoptinCompleted ? '1' : '0',
+            'is_realty_owner' => $this->isRealtyOwner ? '1' : '0',
+            'realty_owner_consultation_request' => $this->realtyOwnerConsultationRequest ? '1' : '0',
+        ]);
     }
 }

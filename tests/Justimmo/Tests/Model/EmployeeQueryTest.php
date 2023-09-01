@@ -14,19 +14,20 @@ class EmployeeQueryTest extends TestCase
     private function getQuery($api = null)
     {
         $mapper = new EmployeeMapper();
+
         return new EmployeeQuery($api ?: new JustimmoNullApi(), new EmployeeWrapper($mapper), $mapper);
     }
 
     public function testFindIds()
     {
-        $api = new MockJustimmoApi(array('employeeIds' => $this->getFixtures('v1/employee_ids.json')));
+        $api = new MockJustimmoApi(['employeeIds' => $this->getFixtures('v1/employee_ids.json')]);
         $query = $this->getQuery($api);
 
-        $this->assertEquals(array(
+        $this->assertEquals([
             1,
             2,
             4,
             5,
-        ), $query->findIds());
+        ], $query->findIds());
     }
 }

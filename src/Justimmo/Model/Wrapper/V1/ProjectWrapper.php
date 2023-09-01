@@ -1,16 +1,17 @@
 <?php
+
 namespace Justimmo\Model\Wrapper\V1;
 
 use Justimmo\Model\Attachment;
+use Justimmo\Model\Garage;
+use Justimmo\Model\Mapper\V1\EmployeeMapper;
 use Justimmo\Model\Mapper\V1\RealtyMapper;
 use Justimmo\Model\Project;
-use Justimmo\Model\Garage;
 use Justimmo\Pager\ListPager;
-use Justimmo\Model\Mapper\V1\EmployeeMapper;
 
 class ProjectWrapper extends AbstractWrapper
 {
-    protected $simpleMapping = array(
+    protected $simpleMapping = [
         'id',
         'nummer',
         'titel',
@@ -51,7 +52,7 @@ class ProjectWrapper extends AbstractWrapper
         'fertigstellung',
         'verkaufsstart',
         'erstellt_am',
-    );
+    ];
 
     public function transformSingle($data)
     {
@@ -69,7 +70,7 @@ class ProjectWrapper extends AbstractWrapper
         }
 
         if (isset($xml->status) && $xml->status->attributes()->semantic) {
-            $string = (string)$xml->status->attributes()->semantic;
+            $string = (string) $xml->status->attributes()->semantic;
 
             $project->setProjectStateSemantic($string);
         }
@@ -128,7 +129,7 @@ class ProjectWrapper extends AbstractWrapper
                     $attributes = $this->attributesToArray($kategorie);
 
                     if (array_key_exists('id', $attributes)) {
-                        $project->addCategory($attributes['id'], (string)$kategorie);
+                        $project->addCategory($attributes['id'], (string) $kategorie);
                     }
 
                 }
@@ -139,7 +140,7 @@ class ProjectWrapper extends AbstractWrapper
             $key = 0;
 
             foreach ($xml->stellplaetze[0] as $stellplaetz) {
-                $garage = new Garage((string) $stellplaetz->art, (string) $stellplaetz->name, (int) $stellplaetz->anzahl, (string) $stellplaetz->vermarktungsart, (double) $stellplaetz->brutto, (double) $stellplaetz->netto, (double) $stellplaetz->ust, (string) $stellplaetz->ust_typ, (double) $stellplaetz->ust_wert);
+                $garage = new Garage((string) $stellplaetz->art, (string) $stellplaetz->name, (int) $stellplaetz->anzahl, (string) $stellplaetz->vermarktungsart, (float) $stellplaetz->brutto, (float) $stellplaetz->netto, (float) $stellplaetz->ust, (string) $stellplaetz->ust_typ, (float) $stellplaetz->ust_wert);
 
                 $project->addGarage($key, $garage);
 
@@ -149,36 +150,36 @@ class ProjectWrapper extends AbstractWrapper
 
         if (isset($xml->geokoordinaten)) {
             $coord = $this->attributesToArray($xml->geokoordinaten->attributes());
-            $project->setLatitude((double) $coord['breitengrad']);
-            $project->setLongitude((double) $coord['laengengrad']);
+            $project->setLatitude((float) $coord['breitengrad']);
+            $project->setLongitude((float) $coord['laengengrad']);
         }
 
         if (isset($xml->residential_aggregation_data)) {
             $rad = $xml->residential_aggregation_data;
 
             if (isset($rad->area_from)) {
-                $project->setAreaFrom((float)$rad->area_from);
+                $project->setAreaFrom((float) $rad->area_from);
             }
             if (isset($rad->area_to)) {
-                $project->setAreaTo((float)$rad->area_to);
+                $project->setAreaTo((float) $rad->area_to);
             }
 
             if (isset($rad->price_from)) {
-                $project->setPriceFrom((float)$rad->price_from);
+                $project->setPriceFrom((float) $rad->price_from);
             }
             if (isset($rad->price_to)) {
-                $project->setPriceTo((float)$rad->price_to);
+                $project->setPriceTo((float) $rad->price_to);
             }
 
             if (isset($rad->rooms_from)) {
-                $project->setRoomsFrom((float)$rad->rooms_from);
+                $project->setRoomsFrom((float) $rad->rooms_from);
             }
             if (isset($rad->rooms_to)) {
-                $project->setRoomsTo((float)$rad->rooms_to);
+                $project->setRoomsTo((float) $rad->rooms_to);
             }
 
             if (isset($rad->available)) {
-                $project->setSubunitsAvailable((float)$rad->available);
+                $project->setSubunitsAvailable((float) $rad->available);
             }
         }
 

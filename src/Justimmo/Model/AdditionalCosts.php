@@ -12,21 +12,21 @@ class AdditionalCosts
     /**
      * the net value
      *
-     * @var double
+     * @var float
      */
     protected $net;
 
     /**
      * the gross value
      *
-     * @var double
+     * @var float
      */
     protected $gross;
 
     /**
      * the vat value in percent
      *
-     * @var double
+     * @var float
      */
     protected $vat;
 
@@ -40,14 +40,14 @@ class AdditionalCosts
     /**
      * the calculated vat value in currency
      *
-     * @var double
+     * @var float
      */
     protected $vatValue;
 
     /**
      * the vat value as inputed by user
      *
-     * @var double
+     * @var float
      */
     protected $vatInput;
 
@@ -59,21 +59,15 @@ class AdditionalCosts
     protected $optional = false;
 
     /**
-     * @param        $name
-     * @param null   $gross
-     * @param null   $net
-     * @param null   $vat
-     * @param string $vatType
-     * @param null   $vatValue
-     * @param null   $vatInput
-     * @param bool   $optional
+     * @param  string  $vatType
+     * @param  bool  $optional
      */
     public function __construct($name, $gross = null, $net = null, $vat = null, $vatType = 'percent', $vatValue = null, $vatInput = null, $optional = false)
     {
         $this->gross = $gross;
-        $this->name   = $name;
-        $this->net    = $net;
-        $this->vat    = $vat;
+        $this->name = $name;
+        $this->net = $net;
+        $this->vat = $vat;
         $this->vatType = $vatType;
         $this->vatValue = $vatValue;
         $this->vatInput = $vatInput;
@@ -81,8 +75,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param float $brutto
-     *
+     * @param  float  $brutto
      * @return $this
      */
     public function setGross($brutto)
@@ -101,8 +94,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param string $name
-     *
+     * @param  string  $name
      * @return $this
      */
     public function setName($name)
@@ -121,8 +113,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function setNet($value)
@@ -141,8 +132,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function setVat($value)
@@ -161,7 +151,7 @@ class AdditionalCosts
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getOptional()
     {
@@ -169,8 +159,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param boolean $value
-     *
+     * @param  bool  $value
      * @return $this
      */
     public function setOptional($value)
@@ -189,8 +178,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function setVatInput($value)
@@ -209,8 +197,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function setVatType($value)
@@ -229,8 +216,7 @@ class AdditionalCosts
     }
 
     /**
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function setVatValue($value)
@@ -239,5 +225,4 @@ class AdditionalCosts
 
         return $this;
     }
-
 }

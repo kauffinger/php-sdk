@@ -20,10 +20,6 @@ abstract class AbstractWrapper implements WrapperInterface
 
     /**
      * maps an mapping array between a SimpleXML and Objekt
-     *
-     * @param                   $mapping
-     * @param \SimpleXMLElement $xml
-     * @param                   $objekt
      */
     protected function map($mapping, \SimpleXMLElement $xml, $objekt)
     {
@@ -38,9 +34,7 @@ abstract class AbstractWrapper implements WrapperInterface
     /**
      * casts a simple xml element to a type
      *
-     * @param        $xml
-     * @param string $type
-     *
+     * @param  string  $type
      * @return float|int|null|string|\DateTime
      */
     protected function cast(\SimpleXMLElement $xml, $type = 'string')
@@ -51,7 +45,7 @@ abstract class AbstractWrapper implements WrapperInterface
             case 'int':
                 return (int) $xml;
             case 'double':
-                return (double) $xml;
+                return (float) $xml;
             case 'boolean' :
                 return (bool) ((string) $xml);
             case 'datetime':
@@ -59,6 +53,7 @@ abstract class AbstractWrapper implements WrapperInterface
                 if (empty($date)) {
                     return null;
                 }
+
                 return new \DateTime($date);
             default:
                 return $xml;
@@ -68,7 +63,6 @@ abstract class AbstractWrapper implements WrapperInterface
     /**
      * converts the attributes of a SimpleXmlElement to an array
      *
-     * @param \SimpleXMLElement $xml
      *
      * @return array
      */
@@ -76,14 +70,11 @@ abstract class AbstractWrapper implements WrapperInterface
     {
         $array = (array) $xml;
 
-        return array_key_exists('@attributes', $array) ? $array['@attributes'] : array();
+        return array_key_exists('@attributes', $array) ? $array['@attributes'] : [];
     }
 
     /**
-     * @param \SimpleXMLElement                                                       $xml
-     * @param \Justimmo\Model\Realty|\Justimmo\Model\Employee|\Justimmo\Model\Project $attachmentAware
-     * @param null                                                                    $type
-     * @param null                                                                    $forceGroup
+     * @param  \Justimmo\Model\Realty|\Justimmo\Model\Employee|\Justimmo\Model\Project  $attachmentAware
      *
      * @internal param array $data
      */
@@ -98,7 +89,7 @@ abstract class AbstractWrapper implements WrapperInterface
                 $attachment = new Attachment($path, $type, $group);
                 $attachment->mergeData($data);
                 if (isset($anhang->vorschaubild)) {
-                    $attachment->mergeData(array('vorschaubild' => $this->cast($anhang->vorschaubild)));
+                    $attachment->mergeData(['vorschaubild' => $this->cast($anhang->vorschaubild)]);
                 }
                 $attachment->setTitle($this->cast($anhang->anhangtitel));
                 $attachment->setOriginalFilename($this->cast($anhang->original_dateiname));
@@ -110,7 +101,7 @@ abstract class AbstractWrapper implements WrapperInterface
                 $path = isset($anhang->orig) ? $anhang->orig : $anhang->pfad;
                 $attachment = new Attachment($this->cast($path), $type, $group);
                 if (isset($anhang->vorschaubild)) {
-                    $attachment->mergeData(array('vorschaubild' => $this->cast($anhang->vorschaubild)));
+                    $attachment->mergeData(['vorschaubild' => $this->cast($anhang->vorschaubild)]);
                 }
                 $attachment->setTitle($this->cast($anhang->titel));
                 $attachment->setOriginalFilename($this->cast($anhang->original_dateiname));
@@ -118,5 +109,4 @@ abstract class AbstractWrapper implements WrapperInterface
             }
         }
     }
-
 }

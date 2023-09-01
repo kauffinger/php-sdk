@@ -6,7 +6,6 @@ use Justimmo\Model\Query\AbstractQuery;
 
 /**
  * Class ProjectQuery
- * @package Justimmo\Model
  *
  * @method Project findPk($pk)
  * @method Project|null findOne($pk)
@@ -23,9 +22,8 @@ use Justimmo\Model\Query\AbstractQuery;
  */
 class ProjectQuery extends AbstractQuery
 {
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getListCall()
     {
@@ -33,7 +31,7 @@ class ProjectQuery extends AbstractQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getDetailCall()
     {
@@ -41,7 +39,7 @@ class ProjectQuery extends AbstractQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdsCall()
     {
@@ -51,8 +49,7 @@ class ProjectQuery extends AbstractQuery
     /**
      * Return all projects, regardless of realties in projects
      *
-     * @param bool $all
-     *
+     * @param  bool  $all
      * @return $this
      */
     public function all($all = true)
@@ -63,8 +60,7 @@ class ProjectQuery extends AbstractQuery
     /**
      * Return all project realties regardless of realty state (active, inactive, draft,...)
      *
-     * @param bool $all
-     *
+     * @param  bool  $all
      * @return $this
      */
     public function allProjectRealties($all = true)
@@ -75,8 +71,7 @@ class ProjectQuery extends AbstractQuery
     /**
      * Return only realty ids instead of realty data in project tags
      *
-     * @param bool $value
-     *
+     * @param  bool  $value
      * @return ProjectQuery
      */
     public function onlyRealtyIds($value = true)

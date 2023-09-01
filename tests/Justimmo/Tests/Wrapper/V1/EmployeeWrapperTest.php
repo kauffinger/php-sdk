@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Tests\Wrapper\V1;
 
 use Justimmo\Model\Mapper\V1\EmployeeMapper;
@@ -7,7 +8,6 @@ use Justimmo\Tests\TestCase;
 
 class EmployeeWrapperTest extends TestCase
 {
-
     public function testTransform()
     {
         $wrapper = new EmployeeWrapper(new EmployeeMapper());

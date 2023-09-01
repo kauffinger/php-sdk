@@ -23,7 +23,6 @@ abstract class AbstractMapper implements MapperInterface
     /**
      * gets the setter for a api property name
      *
-     * @param $apiPropertyName
      *
      * @return mixed
      */
@@ -31,12 +30,10 @@ abstract class AbstractMapper implements MapperInterface
     {
         $property = $this->getProperty($apiPropertyName);
 
-        return 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $property)));
+        return 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $property)));
     }
 
     /**
-     * @param $apiPropertyName
-     *
      * @return string
      */
     public function getType($apiPropertyName)
@@ -47,8 +44,6 @@ abstract class AbstractMapper implements MapperInterface
     }
 
     /**
-     * @param $apiPropertyName
-     *
      * @return string
      */
     public function getProperty($apiPropertyName)
@@ -74,7 +69,6 @@ abstract class AbstractMapper implements MapperInterface
     /**
      * get mapping information of a api property
      *
-     * @param $apiPropertyName
      *
      * @return array
      */
@@ -82,6 +76,6 @@ abstract class AbstractMapper implements MapperInterface
     {
         $mapping = $this->getMapping();
 
-        return array_key_exists($apiPropertyName, $mapping) ? $mapping[$apiPropertyName] : array();
+        return array_key_exists($apiPropertyName, $mapping) ? $mapping[$apiPropertyName] : [];
     }
 }

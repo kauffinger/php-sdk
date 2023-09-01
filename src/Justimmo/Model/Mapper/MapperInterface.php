@@ -7,7 +7,6 @@ interface MapperInterface
     /**
      * gets the setter for a api property name
      *
-     * @param $apiPropertyName
      *
      * @return string
      */
@@ -16,7 +15,6 @@ interface MapperInterface
     /**
      * get the type a property has to be cast ing
      *
-     * @param $apiPropertyName
      *
      * @return string
      */
@@ -25,7 +23,6 @@ interface MapperInterface
     /**
      * get the name of the property on a model object for a api property name
      *
-     * @param $apiPropertyName
      *
      * @return string
      */
@@ -34,10 +31,8 @@ interface MapperInterface
     /**
      * gets a filter property name to sent to the api call for a specific model property
      *
-     * @param $modelPropertyName
      *
      * @return string
      */
     public function getFilterPropertyName($modelPropertyName);
-
 }

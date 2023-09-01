@@ -27,21 +27,21 @@ class Garage
     /**
      * the net value
      *
-     * @var double
+     * @var float
      */
     protected $net;
 
     /**
      * the gross value
      *
-     * @var double
+     * @var float
      */
     protected $gross;
 
     /**
      * the vat value
      *
-     * @var double
+     * @var float
      */
     protected $vat;
 
@@ -55,30 +55,24 @@ class Garage
     /**
      * the calculated vat value in currency
      *
-     * @var double
+     * @var float
      */
     protected $vatValue;
 
     /**
-     * @param        $type
-     * @param        $name
-     * @param null   $gross
-     * @param null   $net
-     * @param null   $vat
-     * @param string $vatType
-     * @param null   $vatValue
+     * @param  string  $vatType
      */
     public function __construct($type, $name, $quantity = null, $marketingType = 'rent', $gross = null, $net = null, $vat = null, $vatType = 'percent', $vatValue = null)
     {
-        $this->type          = $type;
-        $this->name          = $name;
-        $this->quantity      = $quantity;
+        $this->type = $type;
+        $this->name = $name;
+        $this->quantity = $quantity;
         $this->marketingType = $marketingType;
-        $this->gross         = $gross;
-        $this->net           = $net;
-        $this->vat           = $vat;
-        $this->vatType       = $vatType;
-        $this->vatValue      = $vatValue;
+        $this->gross = $gross;
+        $this->net = $net;
+        $this->vat = $vat;
+        $this->vatType = $vatType;
+        $this->vatValue = $vatValue;
     }
 
     /**
@@ -90,12 +84,13 @@ class Garage
     }
 
     /**
-     * @param string $type
+     * @param  string  $type
      * @return Garage
      */
     public function setType($type)
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -108,12 +103,13 @@ class Garage
     }
 
     /**
-     * @param string $name
+     * @param  string  $name
      * @return Garage
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -126,13 +122,13 @@ class Garage
     }
 
     /**
-     * @param int $quantity
-     *
+     * @param  int  $quantity
      * @return Garage
      */
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
         return $this;
     }
 
@@ -145,13 +141,13 @@ class Garage
     }
 
     /**
-     * @param string $marketingType
-     *
+     * @param  string  $marketingType
      * @return Garage
      */
     public function setMarketingType($marketingType)
     {
         $this->marketingType = $marketingType;
+
         return $this;
     }
 
@@ -164,12 +160,13 @@ class Garage
     }
 
     /**
-     * @param float $net
+     * @param  float  $net
      * @return Garage
      */
     public function setNet($net)
     {
         $this->net = $net;
+
         return $this;
     }
 
@@ -182,12 +179,13 @@ class Garage
     }
 
     /**
-     * @param float $gross
+     * @param  float  $gross
      * @return Garage
      */
     public function setGross($gross)
     {
         $this->gross = $gross;
+
         return $this;
     }
 
@@ -200,12 +198,13 @@ class Garage
     }
 
     /**
-     * @param float $vat
+     * @param  float  $vat
      * @return Garage
      */
     public function setVat($vat)
     {
         $this->vat = $vat;
+
         return $this;
     }
 
@@ -218,12 +217,13 @@ class Garage
     }
 
     /**
-     * @param string $vatType
+     * @param  string  $vatType
      * @return Garage
      */
     public function setVatType($vatType)
     {
         $this->vatType = $vatType;
+
         return $this;
     }
 
@@ -236,12 +236,13 @@ class Garage
     }
 
     /**
-     * @param float $vatValue
+     * @param  float  $vatValue
      * @return Garage
      */
     public function setVatValue($vatValue)
     {
         $this->vatValue = $vatValue;
+
         return $this;
     }
 }

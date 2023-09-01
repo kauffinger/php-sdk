@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Tests\Wrapper\V1;
 
 use Justimmo\Model\Wrapper\V1\BasicDataWrapper;
@@ -98,24 +99,24 @@ class BasicDataWrapperTest extends TestCase
         $list = $this->wrapper->transformRealtyCategories($this->getFixtures('v1/categories.xml'));
 
         $this->assertEquals(4, count($list));
-        $this->assertEquals(array(
-            3469 => array(
-                'name'         => 'Kat 1',
-                'sortableRank' => 2
-            ),
-            3582 => array(
-                'name'         => 'Kat 2',
-                'sortableRank' => 0
-            ),
-            3140 => array(
-                'name'         => 'Luxusobjekte',
-                'sortableRank' => 1
-            ),
-            2057 => array(
-                'name'         => 'Referenzobjekte',
-                'sortableRank' => 3
-            ),
-        ), $list);
+        $this->assertEquals([
+            3469 => [
+                'name' => 'Kat 1',
+                'sortableRank' => 2,
+            ],
+            3582 => [
+                'name' => 'Kat 2',
+                'sortableRank' => 0,
+            ],
+            3140 => [
+                'name' => 'Luxusobjekte',
+                'sortableRank' => 1,
+            ],
+            2057 => [
+                'name' => 'Referenzobjekte',
+                'sortableRank' => 3,
+            ],
+        ], $list);
     }
 
     public function testTenant()

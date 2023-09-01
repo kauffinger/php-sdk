@@ -6,7 +6,6 @@ use Justimmo\Model\Query\AbstractQuery;
 
 /**
  * Class EmployeeQuery
- * @package Justimmo\Model
  *
  * @method Employee findPk($pk)
  * @method Employee|null findOne($pk)
@@ -14,7 +13,7 @@ use Justimmo\Model\Query\AbstractQuery;
 class EmployeeQuery extends AbstractQuery
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getListCall()
     {
@@ -22,7 +21,7 @@ class EmployeeQuery extends AbstractQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getDetailCall()
     {
@@ -30,7 +29,7 @@ class EmployeeQuery extends AbstractQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdsCall()
     {

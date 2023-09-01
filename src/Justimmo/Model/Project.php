@@ -5,7 +5,9 @@ namespace Justimmo\Model;
 class Project
 {
     const PROJECT_STATE_PLANNING = 'planning';
+
     const PROJECT_STATE_BUILDING = 'building';
+
     const PROJECT_STATE_FINISHED = 'finished';
 
     /**
@@ -216,17 +218,17 @@ class Project
     /**
      * @var Realty[]
      */
-    protected $realties = array();
+    protected $realties = [];
 
     /**
      * @var int[]
      */
-    protected $realtyIds = array();
+    protected $realtyIds = [];
 
     /**
      * @var array
      */
-    protected $attachments = array();
+    protected $attachments = [];
 
     /**
      * @var Employee
@@ -243,12 +245,12 @@ class Project
     /**
      * @var array
      */
-    protected $categories = array();
+    protected $categories = [];
 
     /**
      * @var array
      */
-    protected $garages = array();
+    protected $garages = [];
 
     /**
      * @var float
@@ -264,26 +266,32 @@ class Project
      * @var float
      */
     protected $areaFrom;
+
     /**
      * @var float
      */
     protected $areaTo;
+
     /**
      * @var float
      */
     protected $priceFrom;
+
     /**
      * @var float
      */
     protected $priceTo;
+
     /**
      * @var float
      */
     protected $roomsFrom;
+
     /**
      * @var float
      */
     protected $roomsTo;
+
     /**
      * @var int
      */
@@ -298,7 +306,7 @@ class Project
     }
 
     /**
-     * @param float $latitude
+     * @param  float  $latitude
      * @return Project
      */
     public function setLatitude($latitude)
@@ -317,7 +325,7 @@ class Project
     }
 
     /**
-     * @param float $longitude
+     * @param  float  $longitude
      * @return Project
      */
     public function setLongitude($longitude)
@@ -328,8 +336,7 @@ class Project
     }
 
     /**
-     * @param int $id
-     *
+     * @param  int  $id
      * @return $this
      */
     public function setId($id)
@@ -348,8 +355,7 @@ class Project
     }
 
     /**
-     * @param string $projectNumber
-     *
+     * @param  string  $projectNumber
      * @return $this
      */
     public function setProjectNumber($projectNumber)
@@ -368,8 +374,7 @@ class Project
     }
 
     /**
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function setTitle($value)
@@ -388,8 +393,7 @@ class Project
     }
 
     /**
-     * @param string $teaser
-     *
+     * @param  string  $teaser
      * @return $this
      */
     public function setTeaser($teaser)
@@ -408,8 +412,7 @@ class Project
     }
 
     /**
-     * @param string $description
-     *
+     * @param  string  $description
      * @return $this
      */
     public function setDescription($description)
@@ -428,8 +431,7 @@ class Project
     }
 
     /**
-     * @param string $freetext1
-     *
+     * @param  string  $freetext1
      * @return $this
      */
     public function setFreetext1($freetext1)
@@ -448,8 +450,7 @@ class Project
     }
 
     /**
-     * @param string $freetext2
-     *
+     * @param  string  $freetext2
      * @return $this
      */
     public function setFreetext2($freetext2)
@@ -468,8 +469,7 @@ class Project
     }
 
     /**
-     * @param string $freetext3
-     *
+     * @param  string  $freetext3
      * @return $this
      */
     public function setFreetext3($freetext3)
@@ -488,8 +488,7 @@ class Project
     }
 
     /**
-     * @param string $freetext4
-     *
+     * @param  string  $freetext4
      * @return $this
      */
     public function setFreetext4($freetext4)
@@ -508,8 +507,7 @@ class Project
     }
 
     /**
-     * @param string $locality
-     *
+     * @param  string  $locality
      * @return $this
      */
     public function setLocality($locality)
@@ -528,8 +526,7 @@ class Project
     }
 
     /**
-     * @param string $miscellaneous
-     *
+     * @param  string  $miscellaneous
      * @return $this
      */
     public function setMiscellaneous($miscellaneous)
@@ -548,8 +545,7 @@ class Project
     }
 
     /**
-     * @param string $country
-     *
+     * @param  string  $country
      * @return $this
      */
     public function setCountry($country)
@@ -568,8 +564,7 @@ class Project
     }
 
     /**
-     * @param string $federalState
-     *
+     * @param  string  $federalState
      * @return $this
      */
     public function setFederalState($federalState)
@@ -588,8 +583,7 @@ class Project
     }
 
     /**
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function setPlace($value)
@@ -608,8 +602,7 @@ class Project
     }
 
     /**
-     * @param string $zipCode
-     *
+     * @param  string  $zipCode
      * @return $this
      */
     public function setZipCode($zipCode)
@@ -628,8 +621,6 @@ class Project
     }
 
     /**
-     * @param null $street
-     *
      * @return $this
      */
     public function setStreet($street)
@@ -639,17 +630,12 @@ class Project
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getStreet()
     {
         return $this->street;
     }
 
     /**
-     * @param null $houseNumber
-     *
      * @return $this
      */
     public function setHouseNumber($houseNumber)
@@ -659,17 +645,13 @@ class Project
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getHouseNumber()
     {
         return $this->houseNumber;
     }
 
     /**
-     * @param string $proximity
-     *
+     * @param  string  $proximity
      * @return $this
      */
     public function setProximity($proximity)
@@ -688,8 +670,7 @@ class Project
     }
 
     /**
-     * @param int $tierCount
-     *
+     * @param  int  $tierCount
      * @return $this
      */
     public function setTierCount($tierCount)
@@ -708,8 +689,7 @@ class Project
     }
 
     /**
-     * @param int $atticCount
-     *
+     * @param  int  $atticCount
      * @return $this
      */
     public function setAtticCount($atticCount)
@@ -728,8 +708,7 @@ class Project
     }
 
     /**
-     * @param int|null $styleOfBuildingId
-     *
+     * @param  int|null  $styleOfBuildingId
      * @return $this
      */
     public function setStyleOfBuildingId($styleOfBuildingId)
@@ -748,8 +727,7 @@ class Project
     }
 
     /**
-     * @param string $yearOfConstruction
-     *
+     * @param  string  $yearOfConstruction
      * @return $this
      */
     public function setYearOfConstruction($yearOfConstruction)
@@ -768,8 +746,7 @@ class Project
     }
 
     /**
-     * @param string $noiseLevel
-     *
+     * @param  string  $noiseLevel
      * @return $this
      */
     public function setNoiseLevel($noiseLevel)
@@ -788,8 +765,7 @@ class Project
     }
 
     /**
-     * @param string $availability
-     *
+     * @param  string  $availability
      * @return $this
      */
     public function setAvailability($availability)
@@ -809,7 +785,6 @@ class Project
 
     /**
      * @param \DateTime epcValidUntil
-     *
      * @return $this
      */
     public function setEpcValidUntil($epcValidUntil)
@@ -820,8 +795,7 @@ class Project
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getEpcValidUntil($format = 'Y-m-d')
@@ -834,8 +808,7 @@ class Project
     }
 
     /**
-     * @param float $epcHeatingDemand
-     *
+     * @param  float  $epcHeatingDemand
      * @return $this
      */
     public function setEpcHeatingDemand($epcHeatingDemand)
@@ -854,8 +827,7 @@ class Project
     }
 
     /**
-     * @param string $epcHeatingDemandClass
-     *
+     * @param  string  $epcHeatingDemandClass
      * @return $this
      */
     public function setEpcHeatingDemandClass($epcHeatingDemandClass)
@@ -874,8 +846,7 @@ class Project
     }
 
     /**
-     * @param float $epcEnergyEfficiencyFactor
-     *
+     * @param  float  $epcEnergyEfficiencyFactor
      * @return $this
      */
     public function setEpcEnergyEfficiencyFactor($epcEnergyEfficiencyFactor)
@@ -894,8 +865,7 @@ class Project
     }
 
     /**
-     * @param string $epcEnergyEfficiencyFactorClass
-     *
+     * @param  string  $epcEnergyEfficiencyFactorClass
      * @return $this
      */
     public function setEpcEnergyEfficiencyFactorClass($epcEnergyEfficiencyFactorClass)
@@ -914,8 +884,7 @@ class Project
     }
 
     /**
-     * @param string $condition
-     *
+     * @param  string  $condition
      * @return $this
      */
     public function setCondition($condition)
@@ -934,8 +903,7 @@ class Project
     }
 
     /**
-     * @param string $houseCondition
-     *
+     * @param  string  $houseCondition
      * @return $this
      */
     public function setHouseCondition($houseCondition)
@@ -954,8 +922,7 @@ class Project
     }
 
     /**
-     * @param string $areaAssessment
-     *
+     * @param  string  $areaAssessment
      * @return $this
      */
     public function setAreaAssessment($areaAssessment)
@@ -974,8 +941,7 @@ class Project
     }
 
     /**
-     * @param string $propertyAssessment
-     *
+     * @param  string  $propertyAssessment
      * @return $this
      */
     public function setPropertyAssessment($propertyAssessment)
@@ -994,8 +960,7 @@ class Project
     }
 
     /**
-     * @param array $occupancy
-     *
+     * @param  array  $occupancy
      * @return $this
      */
     public function setOccupancy($occupancy)
@@ -1014,8 +979,7 @@ class Project
     }
 
     /**
-     * @param string $projectState
-     *
+     * @param  string  $projectState
      * @return $this
      */
     public function setProjectState($projectState)
@@ -1039,8 +1003,7 @@ class Project
     }
 
     /**
-     * @param string $projectStateSemantic
-     *
+     * @param  string  $projectStateSemantic
      * @return $this
      */
     public function setProjectStateSemantic($projectStateSemantic)
@@ -1059,8 +1022,7 @@ class Project
     }
 
     /**
-     * @param bool $isReference
-     *
+     * @param  bool  $isReference
      * @return $this
      */
     public function setIsReference($isReference)
@@ -1079,8 +1041,7 @@ class Project
     }
 
     /**
-     * @param \DateTime $completionDate
-     *
+     * @param  \DateTime  $completionDate
      * @return $this
      */
     public function setCompletionDate($completionDate)
@@ -1091,8 +1052,7 @@ class Project
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getCompletionDate($format = 'Y-m-d')
@@ -1105,8 +1065,7 @@ class Project
     }
 
     /**
-     * @param \DateTime $saleStart
-     *
+     * @param  \DateTime  $saleStart
      * @return $this
      */
     public function setSaleStart($saleStart)
@@ -1115,8 +1074,7 @@ class Project
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getSaleStart($format = 'Y-m-d')
@@ -1129,8 +1087,7 @@ class Project
     }
 
     /**
-     * @param string $url
-     *
+     * @param  string  $url
      * @return $this
      */
     public function setUrl($url)
@@ -1149,8 +1106,7 @@ class Project
     }
 
     /**
-     * @param \DateTime $createdAt
-     *
+     * @param  \DateTime  $createdAt
      * @return $this
      */
     public function setCreatedAt($createdAt)
@@ -1161,8 +1117,7 @@ class Project
     }
 
     /**
-     * @param string $format formats the date time to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date time to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getCreatedAt($format = 'Y-m-d H:i:s')
@@ -1175,8 +1130,7 @@ class Project
     }
 
     /**
-     * @param array $value
-     *
+     * @param  array  $value
      * @return $this
      */
     public function setRealties($value)
@@ -1187,8 +1141,6 @@ class Project
     }
 
     /**
-     * @param \Justimmo\Model\Realty $realty
-     *
      * @return $this
      */
     public function addRealty(Realty $realty)
@@ -1207,8 +1159,7 @@ class Project
     }
 
     /**
-     * @param \int[] $realtyIds
-     *
+     * @param  \int[]  $realtyIds
      * @return $this
      */
     public function setRealtyIds($realtyIds)
@@ -1219,8 +1170,7 @@ class Project
     }
 
     /**
-     * @param int $id
-     *
+     * @param  int  $id
      * @return $this
      */
     public function addRealtyId($id)
@@ -1243,12 +1193,11 @@ class Project
      */
     public function countRealties()
     {
-        return count((!empty($this->realties) ? $this->realties : $this->realtyIds));
+        return count((! empty($this->realties) ? $this->realties : $this->realtyIds));
     }
 
     /**
-     * @param array $value
-     *
+     * @param  array  $value
      * @return $this
      */
     public function setAttachments($value)
@@ -1259,8 +1208,6 @@ class Project
     }
 
     /**
-     * @param \Justimmo\Model\Attachment $attachment
-     *
      * @return $this
      */
     public function addAttachment(Attachment $attachment)
@@ -1279,14 +1226,12 @@ class Project
     }
 
     /**
-     * @param                     $type
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getAttachmentsByType($type, $group = false)
     {
-        $attachments = array();
+        $attachments = [];
 
         /** @var \Justimmo\Model\Attachment $attachment */
         foreach ($this->attachments as $attachment) {
@@ -1299,8 +1244,7 @@ class Project
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getPictures($group = false)
@@ -1309,8 +1253,7 @@ class Project
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getVideos($group = false)
@@ -1319,8 +1262,7 @@ class Project
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getDocuments($group = false)
@@ -1329,8 +1271,7 @@ class Project
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getLinks($group = false)
@@ -1339,8 +1280,7 @@ class Project
     }
 
     /**
-     * @param \Justimmo\Model\Employee $contact
-     *
+     * @param  \Justimmo\Model\Employee  $contact
      * @return $this
      */
     public function setContact($contact)
@@ -1361,7 +1301,7 @@ class Project
     /**
      * @deprecated use getProjectState or isStateBuilding
      *
-     * @return boolean
+     * @return bool
      */
     public function getUnderConstruction()
     {
@@ -1407,8 +1347,7 @@ class Project
     }
 
     /**
-     * @param array $value
-     *
+     * @param  array  $value
      * @return $this
      */
     public function setCategories($value)
@@ -1419,9 +1358,6 @@ class Project
     }
 
     /**
-     * @param $id
-     * @param $name
-     *
      * @return $this
      */
     public function addCategory($id, $name)
@@ -1432,8 +1368,6 @@ class Project
     }
 
     /**
-     * @param array $stellplaetze
-     *
      * @return $this
      */
     public function setGarages(array $stellplaetze)
@@ -1444,9 +1378,7 @@ class Project
     }
 
     /**
-     * @param string $key
-     * @param Garage $stellplatz
-     *
+     * @param  string  $key
      * @return $this
      */
     public function addGarage($key, Garage $stellplatz)
@@ -1473,7 +1405,7 @@ class Project
     }
 
     /**
-     * @param float $areaFrom
+     * @param  float  $areaFrom
      */
     public function setAreaFrom($areaFrom)
     {
@@ -1489,7 +1421,7 @@ class Project
     }
 
     /**
-     * @param float $areaTo
+     * @param  float  $areaTo
      */
     public function setAreaTo($areaTo)
     {
@@ -1505,7 +1437,7 @@ class Project
     }
 
     /**
-     * @param float $priceFrom
+     * @param  float  $priceFrom
      */
     public function setPriceFrom($priceFrom)
     {
@@ -1521,7 +1453,7 @@ class Project
     }
 
     /**
-     * @param float $priceTo
+     * @param  float  $priceTo
      */
     public function setPriceTo($priceTo)
     {
@@ -1537,7 +1469,7 @@ class Project
     }
 
     /**
-     * @param float $roomsFrom
+     * @param  float  $roomsFrom
      */
     public function setRoomsFrom($roomsFrom)
     {
@@ -1553,7 +1485,7 @@ class Project
     }
 
     /**
-     * @param float $roomsTo
+     * @param  float  $roomsTo
      */
     public function setRoomsTo($roomsTo)
     {
@@ -1569,7 +1501,7 @@ class Project
     }
 
     /**
-     * @param int $subunitsAvailable
+     * @param  int  $subunitsAvailable
      */
     public function setSubunitsAvailable($subunitsAvailable)
     {

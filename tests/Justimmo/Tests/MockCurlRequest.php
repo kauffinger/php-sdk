@@ -11,12 +11,11 @@ class MockCurlRequest
     /**
      * MockCurlRequest constructor.
      *
-     * @param     $content
-     * @param int $statusCode
+     * @param  int  $statusCode
      */
     public function __construct($content, $statusCode)
     {
-        $this->content    = $content;
+        $this->content = $content;
         $this->statusCode = $statusCode;
     }
 
@@ -30,7 +29,7 @@ class MockCurlRequest
 
     public function getError()
     {
-        
+
     }
 
     /**

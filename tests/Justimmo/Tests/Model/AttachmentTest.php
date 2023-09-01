@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Tests\Model;
 
 use Justimmo\Model\Attachment;

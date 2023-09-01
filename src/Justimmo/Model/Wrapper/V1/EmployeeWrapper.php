@@ -1,14 +1,16 @@
 <?php
+
 namespace Justimmo\Model\Wrapper\V1;
 
 use Justimmo\Model\Attachment;
 use Justimmo\Model\Employee;
 use Justimmo\Pager\ListPager;
+
 use function array_key_exists;
 
 class EmployeeWrapper extends AbstractWrapper
 {
-    protected $simpleMapping = array(
+    protected $simpleMapping = [
         'id',
         'email',
         'position',
@@ -31,7 +33,7 @@ class EmployeeWrapper extends AbstractWrapper
         'plz',
         'ort',
         'url',
-    );
+    ];
 
     public function transformSingle($data)
     {
@@ -54,7 +56,7 @@ class EmployeeWrapper extends AbstractWrapper
 
             // add all formats
             foreach ($xml->bild->children() as $key => $size) {
-                $attachment->addData((string)$key, (string)$size);
+                $attachment->addData((string) $key, (string) $size);
             }
 
             $mitarbeiter->addAttachment($attachment);
@@ -74,7 +76,7 @@ class EmployeeWrapper extends AbstractWrapper
 
             // add all formats
             foreach ($xml->bild->children() as $key => $size) {
-                $attachment->addData((string)$key, (string)$size);
+                $attachment->addData((string) $key, (string) $size);
             }
 
             $mitarbeiter->addAttachment($attachment);
@@ -113,7 +115,7 @@ class EmployeeWrapper extends AbstractWrapper
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function mapAttachmentGroup(\SimpleXMLElement $xml, $attachmentAware, $type = null, $forceGroup = null)
     {
@@ -127,7 +129,7 @@ class EmployeeWrapper extends AbstractWrapper
                 $attachment = new Attachment(isset($data['orig']) ? $data['orig'] : $data['pfad'], $type, $group);
                 $attachment->mergeData($data);
                 if (isset($anhang->vorschaubild)) {
-                    $attachment->mergeData(array('vorschaubild' => $this->cast($anhang->vorschaubild)));
+                    $attachment->mergeData(['vorschaubild' => $this->cast($anhang->vorschaubild)]);
                 }
                 $attachment->setTitle($this->cast($anhang->anhangtitel));
                 $attachment->setOriginalFilename($this->cast($anhang->original_dateiname));
@@ -138,7 +140,7 @@ class EmployeeWrapper extends AbstractWrapper
                 }
                 $attachment = new Attachment($this->cast($anhang->pfad), $type, $group);
                 if (isset($anhang->vorschaubild)) {
-                    $attachment->mergeData(array('vorschaubild' => $this->cast($anhang->vorschaubild)));
+                    $attachment->mergeData(['vorschaubild' => $this->cast($anhang->vorschaubild)]);
                 }
                 $attachment->setTitle($this->cast($anhang->titel));
                 $attachment->setOriginalFilename($this->cast($anhang->original_dateiname));
@@ -146,5 +148,4 @@ class EmployeeWrapper extends AbstractWrapper
             }
         }
     }
-
 }

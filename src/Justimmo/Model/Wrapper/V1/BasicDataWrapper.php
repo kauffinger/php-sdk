@@ -10,13 +10,13 @@ class BasicDataWrapper implements BasicDataWrapperInterface
     {
         $xml = new \SimpleXMLElement($data);
 
-        $return = array();
+        $return = [];
         foreach ($xml->land as $land) {
-            $return[(int) $land->id] = array(
+            $return[(int) $land->id] = [
                 'name' => (string) $land->name,
                 'iso2' => (string) $land->iso2,
                 'iso3' => (string) $land->iso3,
-            );
+            ];
         }
 
         return $return;
@@ -26,13 +26,13 @@ class BasicDataWrapper implements BasicDataWrapperInterface
     {
         $xml = new \SimpleXMLElement($data);
 
-        $return = array();
+        $return = [];
         foreach ($xml->bundesland as $bundesland) {
-            $return[(int) $bundesland->id] = array(
-                'name'      => (string) $bundesland->name,
+            $return[(int) $bundesland->id] = [
+                'name' => (string) $bundesland->name,
                 'countryId' => (int) $bundesland->landid,
-                'fipsCode'  => (string) $bundesland->fipscode,
-            );
+                'fipsCode' => (string) $bundesland->fipscode,
+            ];
         }
 
         return $return;
@@ -42,16 +42,16 @@ class BasicDataWrapper implements BasicDataWrapperInterface
     {
         $xml = new \SimpleXMLElement($data);
 
-        $return = array();
+        $return = [];
         foreach ($xml->postleitzahl as $postleitzahl) {
-            $return[] = array(
-                'id'             => ((string) $postleitzahl->id === '') ? null : (int) $postleitzahl->id,
-                'countryId'      => ((string) $postleitzahl->landid === '') ? null : (int) $postleitzahl->landid,
-                'regionId'       => ((string) $postleitzahl->regionid === '') ? null : (int) $postleitzahl->regionid,
-                'zipCode'        => trim((string) $postleitzahl->plz),
-                'place'          => trim((string) $postleitzahl->ort),
+            $return[] = [
+                'id' => ((string) $postleitzahl->id === '') ? null : (int) $postleitzahl->id,
+                'countryId' => ((string) $postleitzahl->landid === '') ? null : (int) $postleitzahl->landid,
+                'regionId' => ((string) $postleitzahl->regionid === '') ? null : (int) $postleitzahl->regionid,
+                'zipCode' => trim((string) $postleitzahl->plz),
+                'place' => trim((string) $postleitzahl->ort),
                 'federalStateId' => ((string) $postleitzahl->bundeslandid === '') ? null : (int) $postleitzahl->bundeslandid,
-            );
+            ];
         }
 
         return $return;
@@ -61,7 +61,7 @@ class BasicDataWrapper implements BasicDataWrapperInterface
     {
         $xml = new \SimpleXMLElement($data);
 
-        $return = array();
+        $return = [];
         foreach ($xml->region as $region) {
             $return[(int) $region->id] = trim((string) $region->name);
         }
@@ -73,13 +73,13 @@ class BasicDataWrapper implements BasicDataWrapperInterface
     {
         $xml = new \SimpleXMLElement($data);
 
-        $return = array();
+        $return = [];
         foreach ($xml->objektart as $objektart) {
-            $return[(int) $objektart->id] = array(
-                'name'      => (string) $objektart->name,
-                'key'       => (string) $objektart->key,
+            $return[(int) $objektart->id] = [
+                'name' => (string) $objektart->name,
+                'key' => (string) $objektart->key,
                 'attribute' => (string) $objektart->attributename,
-            );
+            ];
         }
 
         return $return;
@@ -89,12 +89,12 @@ class BasicDataWrapper implements BasicDataWrapperInterface
     {
         $xml = new \SimpleXMLElement($data);
 
-        $return = array();
+        $return = [];
         foreach ($xml->objektkategorie as $objektkategorie) {
-            $return[(int) $objektkategorie->id] = array(
-                'name'         => (string) $objektkategorie->name,
+            $return[(int) $objektkategorie->id] = [
+                'name' => (string) $objektkategorie->name,
                 'sortableRank' => (int) $objektkategorie->sortablerank,
-            );
+            ];
         }
 
         return $return;

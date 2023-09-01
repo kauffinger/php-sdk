@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Tests\Wrapper\V1;
 
 use Justimmo\Model\Attachment;
@@ -16,7 +17,7 @@ class RealtyWrapperAttachmentGroupTest extends TestCase
         $wrapper = new RealtyWrapper(new RealtyMapper());
 
         $response = $this->getFixtures('v1/realty_detail.xml');
-        $realty   = $wrapper->transformSingle($response);
+        $realty = $wrapper->transformSingle($response);
 
         $attachments = $realty->getAttachments();
         /** @var Attachment $attachment */
@@ -41,7 +42,7 @@ class RealtyWrapperAttachmentGroupTest extends TestCase
         $wrapper = new RealtyWrapper(new RealtyMapper());
 
         $response = $this->getFixtures('v1/realty_detail_2.xml');
-        $realty   = $wrapper->transformSingle($response);
+        $realty = $wrapper->transformSingle($response);
 
         $attachments = $realty->getAttachments();
         /** @var Attachment $attachment */
@@ -60,5 +61,4 @@ class RealtyWrapperAttachmentGroupTest extends TestCase
             $this->assertEquals('/public/pic/s220x155', dirname(parse_url($data['s220x155'])['path']));
         }
     }
-
 }

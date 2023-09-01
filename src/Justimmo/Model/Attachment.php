@@ -7,18 +7,26 @@ use Justimmo\Exception\AttachmentSizeNotFoundException;
 class Attachment
 {
     protected $type;
+
     protected $extension;
-    protected $title            = null;
+
+    protected $title = null;
+
     protected $originalFilename = null;
-    protected $data             = array();
-    protected $group            = null;
-    private   $newStorageHost   = 'storage.justimmo.at';
-    private   $canConvertUrl    = true;
 
-    protected static $pictureExtensions = array('jpg', 'gif', 'png', 'jpeg');
-    protected static $videoExtensions = array('avi', 'mp4', 'mpg', 'wmv');
-    protected static $linkGroups = array('LINKS', 'FILMLINK', 'RUNDGANG', 'PROJEKTURL');
+    protected $data = [];
 
+    protected $group = null;
+
+    private $newStorageHost = 'storage.justimmo.at';
+
+    private $canConvertUrl = true;
+
+    protected static $pictureExtensions = ['jpg', 'gif', 'png', 'jpeg'];
+
+    protected static $videoExtensions = ['avi', 'mp4', 'mpg', 'wmv'];
+
+    protected static $linkGroups = ['LINKS', 'FILMLINK', 'RUNDGANG', 'PROJEKTURL'];
 
     public function __construct($path, $type = null, $group = null)
     {
@@ -35,8 +43,7 @@ class Attachment
     }
 
     /**
-     * @param string $path
-     *
+     * @param  string  $path
      * @return string
      */
     private function extractExtension($path)
@@ -72,18 +79,17 @@ class Attachment
      * gets an url to an attachment size, even if the api does not return that size.
      * BEWARE: this method cannot ensure that the url is a valid resource
      *
-     * @param string $size
-     *
+     * @param  string  $size
      * @return string
      */
     public function calculateUrl($size = 'orig')
     {
         if ($this->canConvertUrl) {
-            if (!in_array($size, array('big', 'big2', 'medium', 'small', 'pdf', 'wohnimpuls_medium', 's220x155', 's312x208', 'fullhd', 'hq', 'default', 'orig'))) {
+            if (! in_array($size, ['big', 'big2', 'medium', 'small', 'pdf', 'wohnimpuls_medium', 's220x155', 's312x208', 'fullhd', 'hq', 'default', 'orig'])) {
                 $size = 'medium';
             }
 
-            return preg_replace("!\/(pic|video)\/(\w+)\/!", "/$1/" . $size . "/", $this->getUrl());
+            return preg_replace("!\/(pic|video)\/(\w+)\/!", '/$1/'.$size.'/', $this->getUrl());
         }
 
         return isset($this->data[$size]) ? $this->data[$size] : $this->data['orig'];
@@ -112,8 +118,7 @@ class Attachment
     }
 
     /**
-     * @param array $data
-     *
+     * @param  array  $data
      * @return $this
      */
     public function setData($data)
@@ -132,9 +137,6 @@ class Attachment
     }
 
     /**
-     * @param $key
-     * @param $value
-     *
      * @return $this
      */
     public function addData($key, $value)
@@ -145,8 +147,6 @@ class Attachment
     }
 
     /**
-     * @param array $data
-     *
      * @return $this
      */
     public function mergeData(array $data)
@@ -157,8 +157,7 @@ class Attachment
     }
 
     /**
-     * @param mixed $extension
-     *
+     * @param  mixed  $extension
      * @return $this
      */
     public function setExtension($extension)
@@ -177,8 +176,7 @@ class Attachment
     }
 
     /**
-     * @param mixed $type
-     *
+     * @param  mixed  $type
      * @return $this
      */
     public function setType($type)
@@ -197,8 +195,6 @@ class Attachment
     }
 
     /**
-     * @param null $title
-     *
      * @return $this
      */
     public function setTitle($title)
@@ -208,17 +204,12 @@ class Attachment
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getTitle()
     {
         return $this->title;
     }
 
     /**
-     * @param null $originalFilename
-     *
      * @return $this
      */
     public function setOriginalFilename($originalFilename)
@@ -228,17 +219,13 @@ class Attachment
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getOriginalFilename()
     {
         return $this->originalFilename;
     }
 
     /**
-     * @param null|string $value
-     *
+     * @param  null|string  $value
      * @return $this
      */
     public function setGroup($value)
@@ -257,9 +244,9 @@ class Attachment
     }
 
     /**
-     * @param string $size
-     *
+     * @param  string  $size
      * @return string|null
+     *
      * @throws AttachmentSizeNotFoundException
      */
     public function getVideoPosterUrl($size = 'orig')
@@ -270,8 +257,8 @@ class Attachment
 
         $videoUrl = $this->getUrl($size);
         $posterUrlParts = explode('.', str_replace('/video/', '/pic/', $videoUrl));
-        $posterUrlParts[count($posterUrlParts)-1] = 'jpg';
+        $posterUrlParts[count($posterUrlParts) - 1] = 'jpg';
+
         return implode('.', $posterUrlParts);
     }
-
 }

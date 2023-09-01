@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Curl;
 
 /**
@@ -21,8 +22,6 @@ namespace Justimmo\Curl;
  * $request->getContentType()
  * $request->getError()
  * (supports all curl constants, but not all have a shortcut method like getStatusCode)
- *
- * @package Justimmo\Curl
  */
 class CurlRequest
 {
@@ -31,7 +30,7 @@ class CurlRequest
      *
      * @var array
      */
-    protected $options = array();
+    protected $options = [];
 
     /**
      * the url
@@ -48,7 +47,7 @@ class CurlRequest
     /**
      * @var mixed
      */
-    protected $infos = array();
+    protected $infos = [];
 
     /**
      * @var string
@@ -58,19 +57,18 @@ class CurlRequest
     /**
      * constructor
      *
-     * @param       $url
-     * @param array $options
+     * @param  array  $options
      *
      * @throws CurlException
      */
-    public function __construct($url = null, $options = array())
+    public function __construct($url = null, $options = [])
     {
-        $this->url     = $url;
+        $this->url = $url;
         $this->options = $options;
     }
 
     /**
-     * @param string $url
+     * @param  string  $url
      */
     public function setUrl($url)
     {
@@ -112,15 +110,15 @@ class CurlRequest
     /**
      * retrieve an info about this curl request
      *
-     * @param $key
      *
      * @return mixed
+     *
      * @throws CurlException
      */
     public function getInfo($key)
     {
-        if (!array_key_exists($key, $this->infos)) {
-            throw new CurlException('Information ' . $key . ' not found in CurlRequest');
+        if (! array_key_exists($key, $this->infos)) {
+            throw new CurlException('Information '.$key.' not found in CurlRequest');
         }
 
         return $this->infos[$key];
@@ -153,7 +151,7 @@ class CurlRequest
      */
     public function clearOptions()
     {
-        $this->options = array();
+        $this->options = [];
 
         return $this;
     }
@@ -161,7 +159,6 @@ class CurlRequest
     /**
      * sets a new set of options, overrides the old ones
      *
-     * @param $options
      *
      * @return $this
      */
@@ -175,8 +172,6 @@ class CurlRequest
     /**
      * sets a specifig option for this curl request
      *
-     * @param $key
-     * @param $value
      *
      * @return $this
      */
@@ -190,15 +185,15 @@ class CurlRequest
     /**
      * gets the value of an option in this curl request
      *
-     * @param $key
      *
      * @return mixed
+     *
      * @throws CurlException
      */
     public function getOption($key)
     {
-        if (!array_key_exists($key, $this->options)) {
-            throw new CurlException('The Options ' . $key . ' is not registered in this CurlRequest');
+        if (! array_key_exists($key, $this->options)) {
+            throw new CurlException('The Options '.$key.' is not registered in this CurlRequest');
         }
 
         return $this->options[$key];
@@ -207,7 +202,6 @@ class CurlRequest
     /**
      * removes an option from this curl request
      *
-     * @param $key
      *
      * @return $this
      */
@@ -221,11 +215,10 @@ class CurlRequest
     /**
      * sets the parameters for a post request
      *
-     * @param array $v
-     *
+     * @param  array  $v
      * @return $this
      */
-    public function setParameters($v = array())
+    public function setParameters($v = [])
     {
         $this->setOption(CURLOPT_POSTFIELDS, $v);
 
@@ -247,7 +240,6 @@ class CurlRequest
     /**
      * executes a post request
      *
-     * @param null $parameters
      *
      * @return mixed
      */
@@ -264,7 +256,6 @@ class CurlRequest
     /**
      * executes a put request
      *
-     * @param null $parameters
      *
      * @return mixed
      */
@@ -282,6 +273,7 @@ class CurlRequest
      * executes the curl request and fills in the information
      *
      * @return mixed
+     *
      * @throws CurlException
      */
     protected function execute()
@@ -294,8 +286,8 @@ class CurlRequest
         curl_setopt_array($ch, $this->options);
 
         $this->content = curl_exec($ch);
-        $this->infos   = curl_getinfo($ch);
-        $this->error   = curl_error($ch);
+        $this->infos = curl_getinfo($ch);
+        $this->error = curl_error($ch);
 
         curl_close($ch);
 

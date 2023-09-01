@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Api;
 
 interface JustimmoApiInterface
@@ -6,44 +7,38 @@ interface JustimmoApiInterface
     /**
      * make a call to the realty list with a set of given params
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callRealtyList(array $params = array());
+    public function callRealtyList(array $params = []);
 
     /**
      * make a call to the realty ids with a set of given params
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callRealtyIds(array $params = array());
+    public function callRealtyIds(array $params = []);
 
     /**
      * calls the detail information of a single realty
      *
-     * @param       $pk
-     * @param array $params
      *
      * @return string
      */
-    public function callRealtyDetail($pk, array $params = array());
+    public function callRealtyDetail($pk, array $params = []);
 
     /**
      * make a call to the team list with a set of given params
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callEmployeeList(array $params = array());
+    public function callEmployeeList(array $params = []);
 
     /**
      * calls the detail information of a single employee
      *
-     * @param $pk
      *
      * @return string
      */
@@ -52,108 +47,94 @@ interface JustimmoApiInterface
     /**
      * Make a call to the employee ids with a set of given params
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callEmployeeIds(array $params = array());
+    public function callEmployeeIds(array $params = []);
 
     /**
      * make a call to the project list with a set of given params
      *
-     * @param array $params
      *
      * @return mixed
      */
-    public function callProjectList(array $params = array());
+    public function callProjectList(array $params = []);
 
     /**
      * calls the detail information of a single project
      *
-     * @param       $pk
-     * @param array $params
      *
      * @return string
      */
-    public function callProjectDetail($pk, array $params = array());
+    public function callProjectDetail($pk, array $params = []);
 
     /**
      * Make a call to the project ids with a set of given params
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callProjectIds(array $params = array());
+    public function callProjectIds(array $params = []);
 
     /**
      * retrieve a countrie list
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callCountries(array $params = array());
+    public function callCountries(array $params = []);
 
     /**
      * retrieve a federal states list
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callFederalStates(array $params = array());
+    public function callFederalStates(array $params = []);
 
     /**
      * retrieve a zip code list
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callZipCodes(array $params = array());
+    public function callZipCodes(array $params = []);
 
     /**
      * retrieve a region list
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callRegions(array $params = array());
+    public function callRegions(array $params = []);
 
     /**
      * Retrieve tenant data
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callTenant(array $params = array());
+    public function callTenant(array $params = []);
 
     /**
      * retrieve a realty type list
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callRealtyTypes(array $params = array());
+    public function callRealtyTypes(array $params = []);
 
     /**
      * retrieve a realtycategories list
      *
-     * @param array $params
      *
      * @return string
      */
-    public function callRealtyCategories(array $params = array());
+    public function callRealtyCategories(array $params = []);
 
     /**
      * retrieves the expose for a realty
      *
-     * @param   $pk
-     * @param   $type
      *
      * @return string
      */
@@ -162,9 +143,8 @@ interface JustimmoApiInterface
     /**
      * makes a request to the api to create a realty inquiry to the contact person of the realty
      *
-     * @param array $params
      *
      * @return string
      */
-    public function postRealtyInquiry(array $params = array());
+    public function postRealtyInquiry(array $params = []);
 }

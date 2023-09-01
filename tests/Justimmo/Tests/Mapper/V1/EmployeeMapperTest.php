@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Tests\Mapper\V1;
 
 use Justimmo\Model\Mapper\V1\EmployeeMapper;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Justimmo\Model\Query;
 
 use Justimmo\Api\JustimmoApiInterface;
@@ -9,15 +10,13 @@ use Justimmo\Model\Wrapper\BasicDataWrapperInterface;
  * Class BasicDataQuery
  *
  * this class allows you to filter and retrieve some basic data from justimmo like countries, federal states, etc...
- *
- * @package Justimmo\Model\Query
  */
 class BasicDataQuery
 {
     /**
      * @var array
      */
-    protected $params = array();
+    protected $params = [];
 
     /**
      * @var JustimmoApiInterface
@@ -35,15 +34,13 @@ class BasicDataQuery
     protected $mapper;
 
     /**
-     * @param JustimmoApiInterface                              $api
-     * @param \Justimmo\Model\Wrapper\BasicDataWrapperInterface $wrapper
      * @param \Justimmo\Model\Mapper\MapperInterface MapperInterface
      */
     public function __construct(JustimmoApiInterface $api, BasicDataWrapperInterface $wrapper, MapperInterface $mapper)
     {
-        $this->api     = $api;
+        $this->api = $api;
         $this->wrapper = $wrapper;
-        $this->mapper  = $mapper;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -53,7 +50,7 @@ class BasicDataQuery
      */
     public function clear()
     {
-        $this->params = array();
+        $this->params = [];
 
         return $this;
     }
@@ -61,8 +58,7 @@ class BasicDataQuery
     /**
      * defines wether the call should retrieve all available data or only available data where there are active realties
      *
-     * @param bool $value
-     *
+     * @param  bool  $value
      * @return $this
      */
     public function all($value)
@@ -71,9 +67,6 @@ class BasicDataQuery
     }
 
     /**
-     *
-     * @param $value
-     *
      * @return $this
      */
     public function filterByCountry($value)
@@ -82,9 +75,6 @@ class BasicDataQuery
     }
 
     /**
-     *
-     * @param $value
-     *
      * @return $this
      */
     public function filterByFederalState($value)
@@ -190,8 +180,6 @@ class BasicDataQuery
     /**
      * sets a value for a key
      *
-     * @param $key
-     * @param $value
      *
      * @return $this
      */

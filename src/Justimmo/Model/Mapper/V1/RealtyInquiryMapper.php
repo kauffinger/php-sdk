@@ -7,26 +7,26 @@ class RealtyInquiryMapper extends AbstractMapper
     protected function getMapping()
     {
         //there is no mapping
-        return array();
+        return [];
     }
 
     protected function getFilterMapping()
     {
-        return array(
-            'firstName'    => 'vorname',
-            'realtyId'     => 'objekt_id',
-            'lastName'     => 'nachname',
-            'email'        => 'email',
-            'phone'        => 'tel',
-            'message'      => 'message',
-            'street'       => 'strasse',
-            'zipCode'      => 'plz',
-            'city'         => 'ort',
-            'country'      => 'land',
-            'title'        => 'titel',
+        return [
+            'firstName' => 'vorname',
+            'realtyId' => 'objekt_id',
+            'lastName' => 'nachname',
+            'email' => 'email',
+            'phone' => 'tel',
+            'message' => 'message',
+            'street' => 'strasse',
+            'zipCode' => 'plz',
+            'city' => 'ort',
+            'country' => 'land',
+            'title' => 'titel',
             'salutationId' => 'anrede_id',
-            'category'     => 'kategorie',
-        );
+            'category' => 'kategorie',
+        ];
     }
 
     public function getSetter($apiPropertyName)

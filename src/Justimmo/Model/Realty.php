@@ -8,19 +8,32 @@ class Realty
      * Orientation constants and their english identifiers.
      * Beware: These are not primarily cardinal directions but orientation of windowed facades (e.g. east-west, north-east-south).
      */
-    const ORIENTATION_NORTH            = 1;
-    const ORIENTATION_NORTH_EAST       = 2;
-    const ORIENTATION_EAST             = 3;
-    const ORIENTATION_SOUTH_EAST       = 4;
-    const ORIENTATION_SOUTH            = 5;
-    const ORIENTATION_SOUTH_WEST       = 6;
-    const ORIENTATION_WEST             = 7;
-    const ORIENTATION_NORTH_WEST       = 8;
-    const ORIENTATION_NORTH_SOUTH      = 9;
-    const ORIENTATION_EAST_WEST        = 10;
-    const ORIENTATION_NORTH_EAST_WEST  = 11;
+    const ORIENTATION_NORTH = 1;
+
+    const ORIENTATION_NORTH_EAST = 2;
+
+    const ORIENTATION_EAST = 3;
+
+    const ORIENTATION_SOUTH_EAST = 4;
+
+    const ORIENTATION_SOUTH = 5;
+
+    const ORIENTATION_SOUTH_WEST = 6;
+
+    const ORIENTATION_WEST = 7;
+
+    const ORIENTATION_NORTH_WEST = 8;
+
+    const ORIENTATION_NORTH_SOUTH = 9;
+
+    const ORIENTATION_EAST_WEST = 10;
+
+    const ORIENTATION_NORTH_EAST_WEST = 11;
+
     const ORIENTATION_NORTH_EAST_SOUTH = 12;
-    const ORIENTATION_SOUTH_EAST_WEST  = 13;
+
+    const ORIENTATION_SOUTH_EAST_WEST = 13;
+
     const ORIENTATION_SOUTH_WEST_NORTH = 14;
 
     protected $id;
@@ -177,22 +190,22 @@ class Realty
     protected $longitude;
 
     /**
-     * @var double
+     * @var float
      */
     protected $latitudePrecise;
 
     /**
-     * @var double
+     * @var float
      */
     protected $longitudePrecise;
 
     /**
-     * @var double|null
+     * @var float|null
      */
     protected $latitudeFuzzy;
 
     /**
-     * @var double|null
+     * @var float|null
      */
     protected $longitudeFuzzy;
 
@@ -251,13 +264,13 @@ class Realty
 
     protected $totalRentVat;
 
-    protected $additionalCosts = array();
+    protected $additionalCosts = [];
 
     protected $transferTax;
 
     protected $landRegistration;
 
-    protected $attachments = array();
+    protected $attachments = [];
 
     protected $yearBuilt;
 
@@ -267,7 +280,7 @@ class Realty
 
     protected $condition;
 
-    protected $equipment = array();
+    protected $equipment = [];
 
     protected $roomCount;
 
@@ -314,6 +327,7 @@ class Realty
     protected $storeRoomCount;
 
     protected $ceilingHeight;
+
     /**
      * @var float|null
      */
@@ -325,7 +339,7 @@ class Realty
 
     protected $locality;
 
-    protected $categories = array();
+    protected $categories = [];
 
     protected $availableFrom;
 
@@ -352,10 +366,12 @@ class Realty
      * @var string
      */
     protected $freetext1 = null;
+
     /**
      * @var string
      */
     protected $freetext2 = null;
+
     /**
      * @var string
      */
@@ -442,14 +458,14 @@ class Realty
     /**
      * The calculated vat value in currency
      *
-     * @var double
+     * @var float
      */
     protected $rentVatValue;
 
     /**
      * The rent vat value as inputed by user
      *
-     * @var double
+     * @var float
      */
     protected $rentVatInput;
 
@@ -459,32 +475,31 @@ class Realty
     protected $isReference = false;
 
     /**
-     * @var double
+     * @var float
      */
     protected $monthlyCosts;
 
     /**
-     * @var double
+     * @var float
      */
     protected $monthlyCostsVat;
 
     /**
-     * @var double
+     * @var float
      */
     protected $financialContribution;
 
     /**
      * @var Garage[]
      */
-    protected $garages = array();
+    protected $garages = [];
 
     protected $buyOnRequest = false;
 
-    protected $pois = array();
+    protected $pois = [];
 
     /**
-     * @param array $nutzungsart
-     *
+     * @param  array  $nutzungsart
      * @return $this
      */
     public function setOccupancy($nutzungsart)
@@ -503,8 +518,7 @@ class Realty
     }
 
     /**
-     * @param string $objektart
-     *
+     * @param  string  $objektart
      * @return $this
      */
     public function setRealtyType($objektart)
@@ -535,8 +549,7 @@ class Realty
     }
 
     /**
-     * @param int|null $realtyTypeId
-     *
+     * @param  int|null  $realtyTypeId
      * @return $this
      */
     public function setRealtyTypeId($realtyTypeId)
@@ -557,8 +570,7 @@ class Realty
     }
 
     /**
-     * @param null|string $realtyTypeName
-     *
+     * @param  null|string  $realtyTypeName
      * @return $this
      */
     public function setRealtyTypeName($realtyTypeName)
@@ -579,8 +591,7 @@ class Realty
     }
 
     /**
-     * @param null|string $subRealtyType
-     *
+     * @param  null|string  $subRealtyType
      * @return $this
      */
     public function setSubRealtyType($subRealtyType)
@@ -601,13 +612,13 @@ class Realty
     }
 
     /**
-     * @param int|null $subRealtyTypeId
-     *
+     * @param  int|null  $subRealtyTypeId
      * @return $this
      */
     public function setSubRealtyTypeId($subRealtyTypeId)
     {
         $this->subRealtyTypeId = $subRealtyTypeId;
+
         return $this;
     }
 
@@ -620,7 +631,7 @@ class Realty
     }
 
     /**
-     * @param int $ownershipTypeId
+     * @param  int  $ownershipTypeId
      */
     public function setOwnershipTypeId($ownershipTypeId)
     {
@@ -638,19 +649,18 @@ class Realty
     }
 
     /**
-     * @param string|null $subRealtyTypeName
-     *
+     * @param  string|null  $subRealtyTypeName
      * @return $this
      */
     public function setSubRealtyTypeName($subRealtyTypeName)
     {
         $this->subRealtyTypeName = $subRealtyTypeName;
+
         return $this;
     }
 
     /**
-     * @param array $vermarktungsart
-     *
+     * @param  array  $vermarktungsart
      * @return $this
      */
     public function setMarketingType($vermarktungsart)
@@ -669,8 +679,7 @@ class Realty
     }
 
     /**
-     * @param int|null $anzahlGarten
-     *
+     * @param  int|null  $anzahlGarten
      * @return $this
      */
     public function setGardenCount($anzahlGarten)
@@ -689,8 +698,7 @@ class Realty
     }
 
     /**
-     * @param int|null $anzahlKeller
-     *
+     * @param  int|null  $anzahlKeller
      * @return $this
      */
     public function setCellarCount($anzahlKeller)
@@ -709,8 +717,7 @@ class Realty
     }
 
     /**
-     * @param string $dreizeiler
-     *
+     * @param  string  $dreizeiler
      * @return $this
      */
     public function setTeaser($dreizeiler)
@@ -729,8 +736,7 @@ class Realty
     }
 
     /**
-     * @param string $etage
-     *
+     * @param  string  $etage
      * @return $this
      */
     public function setTier($etage)
@@ -749,8 +755,7 @@ class Realty
     }
 
     /**
-     * @param float $gesamtmiete
-     *
+     * @param  float  $gesamtmiete
      * @return $this
      */
     public function setTotalRent($gesamtmiete)
@@ -769,8 +774,7 @@ class Realty
     }
 
     /**
-     * @param float $grundflaeche
-     *
+     * @param  float  $grundflaeche
      * @return $this
      */
     public function setSurfaceArea($grundflaeche)
@@ -789,8 +793,7 @@ class Realty
     }
 
     /**
-     * @param mixed $id
-     *
+     * @param  mixed  $id
      * @return $this
      */
     public function setId($id)
@@ -809,8 +812,7 @@ class Realty
     }
 
     /**
-     * @param float $kaufpreis
-     *
+     * @param  float  $kaufpreis
      * @return $this
      */
     public function setPurchasePrice($kaufpreis)
@@ -829,8 +831,7 @@ class Realty
     }
 
     /**
-     * @param float $kaufpreisnetto
-     *
+     * @param  float  $kaufpreisnetto
      * @return $this
      */
     public function setPurchasePriceNet($kaufpreisnetto)
@@ -849,8 +850,7 @@ class Realty
     }
 
     /**
-     * @param float $kaufpreisust
-     *
+     * @param  float  $kaufpreisust
      * @return $this
      */
     public function setPurchasePriceVat($kaufpreisust)
@@ -869,8 +869,6 @@ class Realty
     }
 
     /**
-     * @param null $naehe
-     *
      * @return $this
      */
     public function setProximity($naehe)
@@ -880,9 +878,6 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getProximity()
     {
         return $this->proximity;
@@ -897,8 +892,7 @@ class Realty
     }
 
     /**
-     * @param float $floorAreaFrom
-     *
+     * @param  float  $floorAreaFrom
      * @return $this
      */
     public function setFloorAreaFrom($floorAreaFrom)
@@ -909,8 +903,7 @@ class Realty
     }
 
     /**
-     * @param float $nutzflaeche
-     *
+     * @param  float  $nutzflaeche
      * @return $this
      */
     public function setFloorArea($nutzflaeche)
@@ -929,8 +922,7 @@ class Realty
     }
 
     /**
-     * @param string $objektbeschreibung
-     *
+     * @param  string  $objektbeschreibung
      * @return $this
      */
     public function setDescription($objektbeschreibung)
@@ -949,8 +941,7 @@ class Realty
     }
 
     /**
-     * @param string $sonstige_angaben
-     *
+     * @param  string  $sonstige_angaben
      * @return $this
      */
     public function setOtherInformation($sonstige_angaben)
@@ -969,8 +960,7 @@ class Realty
     }
 
     /**
-     * @param mixed $objektnummer
-     *
+     * @param  mixed  $objektnummer
      * @return $this
      */
     public function setPropertyNumber($objektnummer)
@@ -989,8 +979,7 @@ class Realty
     }
 
     /**
-     * @param string $ort
-     *
+     * @param  string  $ort
      * @return $this
      */
     public function setPlace($ort)
@@ -1009,8 +998,7 @@ class Realty
     }
 
     /**
-     * @param int $plz
-     *
+     * @param  int  $plz
      * @return $this
      */
     public function setZipCode($plz)
@@ -1029,8 +1017,7 @@ class Realty
     }
 
     /**
-     * @param null|int $projectId
-     *
+     * @param  null|int  $projectId
      * @return $this
      */
     public function setProjectId($projectId)
@@ -1049,8 +1036,7 @@ class Realty
     }
 
     /**
-     * @param string $status
-     *
+     * @param  string  $status
      * @return $this
      */
     public function setStatus($status)
@@ -1069,8 +1055,7 @@ class Realty
     }
 
     /**
-     * @param string $titel
-     *
+     * @param  string  $titel
      * @return $this
      */
     public function setTitle($titel)
@@ -1089,8 +1074,7 @@ class Realty
     }
 
     /**
-     * @param int $tuernummer
-     *
+     * @param  int  $tuernummer
      * @return $this
      */
     public function setDoorNumber($tuernummer)
@@ -1109,8 +1093,7 @@ class Realty
     }
 
     /**
-     * @param string $ausstattBeschr
-     *
+     * @param  string  $ausstattBeschr
      * @return $this
      */
     public function setEquipmentDescription($ausstattBeschr)
@@ -1129,8 +1112,7 @@ class Realty
     }
 
     /**
-     * @param float $breitengrad
-     *
+     * @param  float  $breitengrad
      * @return $this
      */
     public function setLatitude($breitengrad)
@@ -1149,8 +1131,7 @@ class Realty
     }
 
     /**
-     * @param float $laengengrad
-     *
+     * @param  float  $laengengrad
      * @return $this
      */
     public function setLongitude($laengengrad)
@@ -1169,8 +1150,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlEtagen
-     *
+     * @param  int  $anzahlEtagen
      * @return $this
      */
     public function setTierCount($anzahlEtagen)
@@ -1189,8 +1169,6 @@ class Realty
     }
 
     /**
-     * @param null $bundesland
-     *
      * @return $this
      */
     public function setFederalState($bundesland)
@@ -1200,17 +1178,12 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getFederalState()
     {
         return $this->federalState;
     }
 
     /**
-     * @param null $flur
-     *
      * @return $this
      */
     public function setHallway($flur)
@@ -1220,17 +1193,12 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getHallway()
     {
         return $this->hallway;
     }
 
     /**
-     * @param null $flurstueck
-     *
      * @return $this
      */
     public function setLandParcel($flurstueck)
@@ -1240,17 +1208,12 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getLandParcel()
     {
         return $this->landParcel;
     }
 
     /**
-     * @param null $gemarkung
-     *
      * @return $this
      */
     public function setDistrict($gemarkung)
@@ -1260,17 +1223,12 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getDistrict()
     {
         return $this->district;
     }
 
     /**
-     * @param null $hausnummer
-     *
      * @return $this
      */
     public function setHouseNumber($hausnummer)
@@ -1280,17 +1238,12 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getHouseNumber()
     {
         return $this->houseNumber;
     }
 
     /**
-     * @param null $land
-     *
      * @return $this
      */
     public function setCountry($land)
@@ -1300,17 +1253,13 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getCountry()
     {
         return $this->country;
     }
 
     /**
-     * @param string $regionalerZusatz
-     *
+     * @param  string  $regionalerZusatz
      * @return $this
      */
     public function setRegionalAddition($regionalerZusatz)
@@ -1334,8 +1283,7 @@ class Realty
     }
 
     /**
-     * @param string $strasse
-     *
+     * @param  string  $strasse
      * @return $this
      */
     public function setStreet($strasse)
@@ -1354,8 +1302,7 @@ class Realty
     }
 
     /**
-     * @param float $gesamtMieteUst
-     *
+     * @param  float  $gesamtMieteUst
      * @return $this
      */
     public function setTotalRentVat($gesamtMieteUst)
@@ -1374,8 +1321,7 @@ class Realty
     }
 
     /**
-     * @param float $heizkosten
-     *
+     * @param  float  $heizkosten
      * @return $this
      */
     public function setHeatingCosts($heizkosten)
@@ -1394,8 +1340,7 @@ class Realty
     }
 
     /**
-     * @param float $kaution
-     *
+     * @param  float  $kaution
      * @return $this
      */
     public function setSurety($kaution)
@@ -1414,8 +1359,7 @@ class Realty
     }
 
     /**
-     * @param string $kautionText
-     *
+     * @param  string  $kautionText
      * @return $this
      */
     public function setSuretyText($kautionText)
@@ -1434,8 +1378,6 @@ class Realty
     }
 
     /**
-     * @param null $abstand
-     *
      * @return $this
      */
     public function setCompensation($abstand)
@@ -1445,17 +1387,13 @@ class Realty
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getCompensation()
     {
         return $this->compensation;
     }
 
     /**
-     * @param float $nebenkosten
-     *
+     * @param  float  $nebenkosten
      * @return $this
      */
     public function setAdditionalCharges($nebenkosten)
@@ -1474,8 +1412,7 @@ class Realty
     }
 
     /**
-     * @param float $nettoKaltMiete
-     *
+     * @param  float  $nettoKaltMiete
      * @return $this
      */
     public function setNetRent($nettoKaltMiete)
@@ -1500,8 +1437,7 @@ class Realty
     }
 
     /**
-     * @param float $nettoertragJaehrlich
-     *
+     * @param  float  $nettoertragJaehrlich
      * @return $this
      */
     public function setNetEarningYearly($nettoertragJaehrlich)
@@ -1520,8 +1456,7 @@ class Realty
     }
 
     /**
-     * @param float $nettoertragMonatlich
-     *
+     * @param  float  $nettoertragMonatlich
      * @return $this
      */
     public function setNetEarningMonthly($nettoertragMonatlich)
@@ -1540,8 +1475,7 @@ class Realty
     }
 
     /**
-     * @param float $rendite
-     *
+     * @param  float  $rendite
      * @return $this
      */
     public function setYield($rendite)
@@ -1560,8 +1494,7 @@ class Realty
     }
 
     /**
-     * @param string $waehrung
-     *
+     * @param  string  $waehrung
      * @return $this
      */
     public function setCurrency($waehrung)
@@ -1580,8 +1513,7 @@ class Realty
     }
 
     /**
-     * @param float $wohnbaufoerderung
-     *
+     * @param  float  $wohnbaufoerderung
      * @return $this
      */
     public function setBuildingSubsidies($wohnbaufoerderung)
@@ -1600,8 +1532,6 @@ class Realty
     }
 
     /**
-     * @param array $zusatzkosten
-     *
      * @return $this
      */
     public function setAdditionalCosts(array $zusatzkosten)
@@ -1612,9 +1542,7 @@ class Realty
     }
 
     /**
-     * @param string          $key
-     * @param AdditionalCosts $zusatzkosten
-     *
+     * @param  string  $key
      * @return $this
      */
     public function addAdditionalCosts($key, AdditionalCosts $zusatzkosten)
@@ -1633,7 +1561,7 @@ class Realty
     }
 
     /**
-     * @return double|null
+     * @return float|null
      */
     public function getOperatingCostsGross()
     {
@@ -1641,7 +1569,7 @@ class Realty
     }
 
     /**
-     * @return double|null
+     * @return float|null
      */
     public function getOperatingCostsNet()
     {
@@ -1649,7 +1577,7 @@ class Realty
     }
 
     /**
-     * @return double|null
+     * @return float|null
      */
     public function getOperatingCostsVat()
     {
@@ -1657,7 +1585,7 @@ class Realty
     }
 
     /**
-     * @return double|null
+     * @return float|null
      */
     public function getHeatingCostsGross()
     {
@@ -1665,7 +1593,7 @@ class Realty
     }
 
     /**
-     * @return double|null
+     * @return float|null
      */
     public function getHeatingCostsNet()
     {
@@ -1673,7 +1601,7 @@ class Realty
     }
 
     /**
-     * @return double|null
+     * @return float|null
      */
     public function getHeatingCostsVat()
     {
@@ -1681,8 +1609,7 @@ class Realty
     }
 
     /**
-     * @param float $grundbucheintragung
-     *
+     * @param  float  $grundbucheintragung
      * @return $this
      */
     public function setLandRegistration($grundbucheintragung)
@@ -1701,8 +1628,7 @@ class Realty
     }
 
     /**
-     * @param float $grunderwerbssteuer
-     *
+     * @param  float  $grunderwerbssteuer
      * @return $this
      */
     public function setTransferTax($grunderwerbssteuer)
@@ -1721,8 +1647,7 @@ class Realty
     }
 
     /**
-     * @param array $attachments
-     *
+     * @param  array  $attachments
      * @return $this
      */
     public function setAttachments($attachments)
@@ -1741,8 +1666,6 @@ class Realty
     }
 
     /**
-     * @param Attachment $attachment
-     *
      * @return $this
      */
     public function addAttachment(Attachment $attachment)
@@ -1753,14 +1676,12 @@ class Realty
     }
 
     /**
-     * @param                     $type
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getAttachmentsByType($type, $group = false)
     {
-        $attachments = array();
+        $attachments = [];
 
         /** @var \Justimmo\Model\Attachment $attachment */
         foreach ($this->attachments as $attachment) {
@@ -1773,8 +1694,7 @@ class Realty
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getPictures($group = false)
@@ -1783,8 +1703,7 @@ class Realty
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getVideos($group = false)
@@ -1793,8 +1712,7 @@ class Realty
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getDocuments($group = false)
@@ -1803,8 +1721,7 @@ class Realty
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getLinks($group = false)
@@ -1813,8 +1730,7 @@ class Realty
     }
 
     /**
-     * @param float $gesamtflaeche
-     *
+     * @param  float  $gesamtflaeche
      * @return $this
      */
     public function setTotalArea($gesamtflaeche)
@@ -1841,7 +1757,7 @@ class Realty
     }
 
     /**
-     * @param float|null $salesArea
+     * @param  float|null  $salesArea
      * @return $this
      */
     public function setSalesArea($salesArea)
@@ -1860,7 +1776,7 @@ class Realty
     }
 
     /**
-     * @param float|null $shortTermArea
+     * @param  float|null  $shortTermArea
      * @return $this
      */
     public function setShortTermArea($shortTermArea)
@@ -1879,7 +1795,7 @@ class Realty
     }
 
     /**
-     * @param float|null $weightedArea
+     * @param  float|null  $weightedArea
      * @return $this
      */
     public function setWeightedArea($weightedArea)
@@ -1898,7 +1814,7 @@ class Realty
     }
 
     /**
-     * @param float|null $undevelopedAtticArea
+     * @param  float|null  $undevelopedAtticArea
      * @return $this
      */
     public function setUndevelopedAtticArea($undevelopedAtticArea)
@@ -1909,8 +1825,7 @@ class Realty
     }
 
     /**
-     * @param float $wohnflaeche
-     *
+     * @param  float  $wohnflaeche
      * @return $this
      */
     public function setLivingArea($wohnflaeche)
@@ -1929,8 +1844,7 @@ class Realty
     }
 
     /**
-     * @param string|null $zustand
-     *
+     * @param  string|null  $zustand
      * @return $this
      */
     public function setCondition($zustand)
@@ -1949,8 +1863,7 @@ class Realty
     }
 
     /**
-     * @param string|null $erschließung
-     *
+     * @param  string|null  $erschließung
      * @return $this
      */
     public function setInfrastructureProvision($erschließung)
@@ -1969,8 +1882,7 @@ class Realty
     }
 
     /**
-     * @param int|null $baujahr
-     *
+     * @param  int|null  $baujahr
      * @return $this
      */
     public function setYearBuilt($baujahr)
@@ -1989,8 +1901,7 @@ class Realty
     }
 
     /**
-     * @param int|null $alter
-     *
+     * @param  int|null  $alter
      * @return $this
      */
     public function setAge($alter)
@@ -2009,8 +1920,6 @@ class Realty
     }
 
     /**
-     * @param \Justimmo\Model\EnergyPass $v
-     *
      * @return $this
      */
     public function setEnergyPass(EnergyPass $v)
@@ -2029,8 +1938,7 @@ class Realty
     }
 
     /**
-     * @param array $ausstattung
-     *
+     * @param  array  $ausstattung
      * @return $this
      */
     public function setEquipment($ausstattung)
@@ -2049,9 +1957,6 @@ class Realty
     }
 
     /**
-     * @param $key
-     * @param $value
-     *
      * @return $this
      */
     public function addEquipment($key, $value)
@@ -2062,8 +1967,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlAbstellraum
-     *
+     * @param  int  $anzahlAbstellraum
      * @return $this
      */
     public function setStoreRoomCount($anzahlAbstellraum)
@@ -2082,8 +1986,7 @@ class Realty
     }
 
     /**
-     * @param float $ceilingHeight
-     *
+     * @param  float  $ceilingHeight
      * @return $this
      */
     public function setCeilingHeight($ceilingHeight)
@@ -2102,7 +2005,7 @@ class Realty
     }
 
     /**
-     * @param float|null $hallHeight
+     * @param  float|null  $hallHeight
      * @return $this;
      */
     public function setHallHeight($hallHeight)
@@ -2121,8 +2024,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlBadezimmer
-     *
+     * @param  int  $anzahlBadezimmer
      * @return $this
      */
     public function setBathroomCount($anzahlBadezimmer)
@@ -2141,8 +2043,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlBalkonTerrassen
-     *
+     * @param  int  $anzahlBalkonTerrassen
      * @return $this
      */
     public function setBalconyTerraceCount($anzahlBalkonTerrassen)
@@ -2161,8 +2062,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlBalkone
-     *
+     * @param  int  $anzahlBalkone
      * @return $this
      */
     public function setBalconyCount($anzahlBalkone)
@@ -2181,8 +2081,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlGaragen
-     *
+     * @param  int  $anzahlGaragen
      * @return $this
      */
     public function setGarageCount($anzahlGaragen)
@@ -2201,8 +2100,7 @@ class Realty
     }
 
     /**
-     * @param float $garagenFlaeche
-     *
+     * @param  float  $garagenFlaeche
      * @return $this
      */
     public function setGarageArea($garagenFlaeche)
@@ -2221,8 +2119,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlStellplaetze
-     *
+     * @param  int  $anzahlStellplaetze
      * @return $this
      */
     public function setParkingCount($anzahlStellplaetze)
@@ -2241,8 +2138,7 @@ class Realty
     }
 
     /**
-     * @param float $stellplatzFlaeche
-     *
+     * @param  float  $stellplatzFlaeche
      * @return $this
      */
     public function setParkingArea($stellplatzFlaeche)
@@ -2261,8 +2157,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlLoggias
-     *
+     * @param  int  $anzahlLoggias
      * @return $this
      */
     public function setLoggiaCount($anzahlLoggias)
@@ -2281,8 +2176,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlSepWc
-     *
+     * @param  int  $anzahlSepWc
      * @return $this
      */
     public function setToiletRoomCount($anzahlSepWc)
@@ -2301,8 +2195,7 @@ class Realty
     }
 
     /**
-     * @param int $anzahlTerrassen
-     *
+     * @param  int  $anzahlTerrassen
      * @return $this
      */
     public function setTerraceCount($anzahlTerrassen)
@@ -2321,8 +2214,7 @@ class Realty
     }
 
     /**
-     * @param float $anzahlZimmer
-     *
+     * @param  float  $anzahlZimmer
      * @return $this
      */
     public function setRoomCount($anzahlZimmer)
@@ -2341,8 +2233,7 @@ class Realty
     }
 
     /**
-     * @param float $balkonTerrassenFlaeche
-     *
+     * @param  float  $balkonTerrassenFlaeche
      * @return $this
      */
     public function setBalconyTerraceArea($balkonTerrassenFlaeche)
@@ -2361,8 +2252,7 @@ class Realty
     }
 
     /**
-     * @param float $balkonsFlaeche
-     *
+     * @param  float  $balkonsFlaeche
      * @return $this
      */
     public function setBalconyArea($balkonsFlaeche)
@@ -2381,8 +2271,7 @@ class Realty
     }
 
     /**
-     * @param float $bueroflaeche
-     *
+     * @param  float  $bueroflaeche
      * @return $this
      */
     public function setOfficeArea($bueroflaeche)
@@ -2401,8 +2290,7 @@ class Realty
     }
 
     /**
-     * @param float $gartenflaeche
-     *
+     * @param  float  $gartenflaeche
      * @return $this
      */
     public function setGardenArea($gartenflaeche)
@@ -2421,8 +2309,7 @@ class Realty
     }
 
     /**
-     * @param float $kellerflaeche
-     *
+     * @param  float  $kellerflaeche
      * @return $this
      */
     public function setCellarArea($kellerflaeche)
@@ -2441,8 +2328,7 @@ class Realty
     }
 
     /**
-     * @param float $lagerflaeche
-     *
+     * @param  float  $lagerflaeche
      * @return $this
      */
     public function setStorageArea($lagerflaeche)
@@ -2461,8 +2347,7 @@ class Realty
     }
 
     /**
-     * @param float $loggiasFlaeche
-     *
+     * @param  float  $loggiasFlaeche
      * @return $this
      */
     public function setLoggiaArea($loggiasFlaeche)
@@ -2481,8 +2366,7 @@ class Realty
     }
 
     /**
-     * @param float $terrassenFlaeche
-     *
+     * @param  float  $terrassenFlaeche
      * @return $this
      */
     public function setTerraceArea($terrassenFlaeche)
@@ -2501,8 +2385,7 @@ class Realty
     }
 
     /**
-     * @param \Justimmo\Model\Employee $value
-     *
+     * @param  \Justimmo\Model\Employee  $value
      * @return $this
      */
     public function setContact($value)
@@ -2521,8 +2404,7 @@ class Realty
     }
 
     /**
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function setContractEstablishmentCosts($value)
@@ -2541,7 +2423,7 @@ class Realty
     }
 
     /**
-     * @param null|string $freetext1
+     * @param  null|string  $freetext1
      */
     public function setFreetext1($freetext1)
     {
@@ -2557,7 +2439,7 @@ class Realty
     }
 
     /**
-     * @param null|string $freetext2
+     * @param  null|string  $freetext2
      */
     public function setFreetext2($freetext2)
     {
@@ -2573,7 +2455,7 @@ class Realty
     }
 
     /**
-     * @param null|string $freetext3
+     * @param  null|string  $freetext3
      */
     public function setFreetext3($freetext3)
     {
@@ -2589,7 +2471,7 @@ class Realty
     }
 
     /**
-     * @param null|string $freetext3
+     * @param  null|string  $freetext3
      */
     public function setCostsExplanation($costsExplanation)
     {
@@ -2605,7 +2487,7 @@ class Realty
     }
 
     /**
-     * @param string $freetext4
+     * @param  string  $freetext4
      */
     public function setFreetext4($freetext4)
     {
@@ -2629,8 +2511,7 @@ class Realty
     }
 
     /**
-     * @param float $value
-     *
+     * @param  float  $value
      * @return $this
      */
     public function setCommission($value)
@@ -2649,8 +2530,7 @@ class Realty
     }
 
     /**
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function setLocality($value)
@@ -2669,8 +2549,7 @@ class Realty
     }
 
     /**
-     * @param array $value
-     *
+     * @param  array  $value
      * @return $this
      */
     public function setCategories($value)
@@ -2681,9 +2560,6 @@ class Realty
     }
 
     /**
-     * @param $id
-     * @param $name
-     *
      * @return $this
      */
     public function addCategory($id, $name)
@@ -2702,8 +2578,7 @@ class Realty
     }
 
     /**
-     * @param string $value
-     *
+     * @param  string  $value
      * @return $this
      */
     public function setAvailableFrom($value)
@@ -2722,8 +2597,7 @@ class Realty
     }
 
     /**
-     * @param int $statusId
-     *
+     * @param  int  $statusId
      * @return $this
      */
     public function setStatusId($statusId)
@@ -2742,8 +2616,7 @@ class Realty
     }
 
     /**
-     * @param null|string $rentDurationType
-     *
+     * @param  null|string  $rentDurationType
      * @return $this
      */
     public function setRentDurationType($rentDurationType)
@@ -2762,8 +2635,7 @@ class Realty
     }
 
     /**
-     * @param null|int $rentDuration
-     *
+     * @param  null|int  $rentDuration
      * @return $this
      */
     public function setRentDuration($rentDuration)
@@ -2782,8 +2654,7 @@ class Realty
     }
 
     /**
-     * @param float|null $buildableArea
-     *
+     * @param  float|null  $buildableArea
      * @return $this
      */
     public function setBuildableArea($buildableArea)
@@ -2812,8 +2683,7 @@ class Realty
     }
 
     /**
-     * @param int|null $styleOfBuildingId
-     *
+     * @param  int|null  $styleOfBuildingId
      * @return $this
      */
     public function setStyleOfBuildingId($styleOfBuildingId)
@@ -2824,8 +2694,7 @@ class Realty
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getProcuredAt($format = 'Y-m-d')
@@ -2838,8 +2707,6 @@ class Realty
     }
 
     /**
-     * @param \DateTime|null $procuredAt
-     *
      * @return $this
      */
     public function setProcuredAt(\DateTime $procuredAt = null)
@@ -2850,8 +2717,7 @@ class Realty
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getCreatedAt($format = 'Y-m-d H:i:s')
@@ -2864,8 +2730,6 @@ class Realty
     }
 
     /**
-     * @param \DateTime|null $createdAt
-     *
      * @return $this
      */
     public function setCreatedAt(\DateTime $createdAt = null)
@@ -2876,8 +2740,7 @@ class Realty
     }
 
     /**
-     * @param string $format formats the date to the specific format, null returns DateTime
-     *
+     * @param  string  $format formats the date to the specific format, null returns DateTime
      * @return \DateTime|string
      */
     public function getUpdatedAt($format = 'Y-m-d H:i:s')
@@ -2890,8 +2753,6 @@ class Realty
     }
 
     /**
-     * @param \DateTime|null $updatedAt
-     *
      * @return $this
      */
     public function setUpdatedAt(\DateTime $updatedAt = null)
@@ -2910,8 +2771,7 @@ class Realty
     }
 
     /**
-     * @param string $stair
-     *
+     * @param  string  $stair
      * @return $this
      */
     public function setStair($stair)
@@ -2930,8 +2790,7 @@ class Realty
     }
 
     /**
-     * @param float $purchasePricePerSqm
-     *
+     * @param  float  $purchasePricePerSqm
      * @return $this
      */
     public function setPurchasePricePerSqm($purchasePricePerSqm)
@@ -2950,8 +2809,7 @@ class Realty
     }
 
     /**
-     * @param float $rentPerSqmFrom
-     *
+     * @param  float  $rentPerSqmFrom
      * @return $this
      */
     public function setRentPerSqmFrom($rentPerSqmFrom)
@@ -2970,8 +2828,7 @@ class Realty
     }
 
     /**
-     * @param float $rentPerSqm
-     *
+     * @param  float  $rentPerSqm
      * @return $this
      */
     public function setRentPerSqm($rentPerSqm)
@@ -2990,8 +2847,7 @@ class Realty
     }
 
     /**
-     * @param float $operatingCostsPerSqmFrom
-     *
+     * @param  float  $operatingCostsPerSqmFrom
      * @return $this
      */
     public function setOperatingCostsPerSqmFrom($operatingCostsPerSqmFrom)
@@ -3010,8 +2866,7 @@ class Realty
     }
 
     /**
-     * @param float $operatingCostsPerSqm
-     *
+     * @param  float  $operatingCostsPerSqm
      * @return $this
      */
     public function setOperatingCostsPerSqm($operatingCostsPerSqm)
@@ -3024,7 +2879,7 @@ class Realty
     /**
      * returns the precise longitude of the realty regardless of the  visibility settings of addresses in justimmo
      *
-     * @return double
+     * @return float
      */
     public function getLongitudePrecise()
     {
@@ -3032,8 +2887,7 @@ class Realty
     }
 
     /**
-     * @param double $longitudePrecise
-     *
+     * @param  float  $longitudePrecise
      * @return $this
      */
     public function setLongitudePrecise($longitudePrecise)
@@ -3046,7 +2900,7 @@ class Realty
     /**
      * returns the precise latitude of the realty regardless of the visibility settings of addresses in justimmo
      *
-     * @return double
+     * @return float
      */
     public function getLatitudePrecise()
     {
@@ -3054,8 +2908,7 @@ class Realty
     }
 
     /**
-     * @param double $latitudePrecise
-     *
+     * @param  float  $latitudePrecise
      * @return $this
      */
     public function setLatitudePrecise($latitudePrecise)
@@ -3074,7 +2927,7 @@ class Realty
     }
 
     /**
-     * @param float|null $latitudeFuzzy
+     * @param  float|null  $latitudeFuzzy
      */
     public function setLatitudeFuzzy($latitudeFuzzy)
     {
@@ -3090,7 +2943,7 @@ class Realty
     }
 
     /**
-     * @param float|null $longitudeFuzzy
+     * @param  float|null  $longitudeFuzzy
      */
     public function setLongitudeFuzzy($longitudeFuzzy)
     {
@@ -3106,7 +2959,7 @@ class Realty
     }
 
     /**
-     * @param int|null $radiusFuzzy
+     * @param  int|null  $radiusFuzzy
      */
     public function setRadiusFuzzy($radiusFuzzy)
     {
@@ -3124,7 +2977,7 @@ class Realty
     }
 
     /**
-     * @param int $orientation
+     * @param  int  $orientation
      */
     public function setOrientation($orientation)
     {
@@ -3140,8 +2993,7 @@ class Realty
     }
 
     /**
-     * @param string $realtySystemType
-     *
+     * @param  string  $realtySystemType
      * @return $this
      */
     public function setRealtySystemType($realtySystemType)
@@ -3160,8 +3012,7 @@ class Realty
     }
 
     /**
-     * @param int $parentId
-     *
+     * @param  int  $parentId
      * @return $this
      */
     public function setParentId($parentId)
@@ -3180,8 +3031,7 @@ class Realty
     }
 
     /**
-     * @param bool $showInSearch
-     *
+     * @param  bool  $showInSearch
      * @return Realty
      */
     public function setShowInSearch($showInSearch)
@@ -3200,8 +3050,7 @@ class Realty
     }
 
     /**
-     * @param float $rentNet
-     *
+     * @param  float  $rentNet
      * @return Realty
      */
     public function setRentNet($rentNet)
@@ -3220,8 +3069,7 @@ class Realty
     }
 
     /**
-     * @param float $rentVat
-     *
+     * @param  float  $rentVat
      * @return Realty
      */
     public function setRentVat($rentVat)
@@ -3240,8 +3088,7 @@ class Realty
     }
 
     /**
-     * @param string $rentVatType
-     *
+     * @param  string  $rentVatType
      * @return Realty
      */
     public function setRentVatType($rentVatType)
@@ -3260,8 +3107,7 @@ class Realty
     }
 
     /**
-     * @param float $rentGross
-     *
+     * @param  float  $rentGross
      * @return Realty
      */
     public function setRentGross($rentGross)
@@ -3280,8 +3126,7 @@ class Realty
     }
 
     /**
-     * @param float $rentVatValue
-     *
+     * @param  float  $rentVatValue
      * @return Realty
      */
     public function setRentVatValue($rentVatValue)
@@ -3300,8 +3145,7 @@ class Realty
     }
 
     /**
-     * @param float $rentVatInput
-     *
+     * @param  float  $rentVatInput
      * @return Realty
      */
     public function setRentVatInput($rentVatInput)
@@ -3320,8 +3164,7 @@ class Realty
     }
 
     /**
-     * @param bool $isReference
-     *
+     * @param  bool  $isReference
      * @return Realty
      */
     public function setIsReference($isReference)
@@ -3340,8 +3183,7 @@ class Realty
     }
 
     /**
-     * @param float $monthlyCosts
-     *
+     * @param  float  $monthlyCosts
      * @return $this
      */
     public function setMonthlyCosts($monthlyCosts)
@@ -3360,8 +3202,7 @@ class Realty
     }
 
     /**
-     * @param float $monthlyCostsVat
-     *
+     * @param  float  $monthlyCostsVat
      * @return $this
      */
     public function setMonthlyCostsVat($monthlyCostsVat)
@@ -3380,8 +3221,7 @@ class Realty
     }
 
     /**
-     * @param float $financialContribution
-     *
+     * @param  float  $financialContribution
      * @return Realty
      */
     public function setFinancialContribution($financialContribution)
@@ -3392,8 +3232,7 @@ class Realty
     }
 
     /**
-     * @param Garage[] $stellplaetze
-     *
+     * @param  Garage[]  $stellplaetze
      * @return $this
      */
     public function setGarages(array $stellplaetze)
@@ -3404,9 +3243,7 @@ class Realty
     }
 
     /**
-     * @param string $key
-     * @param Garage $stellplatz
-     *
+     * @param  string  $key
      * @return $this
      */
     public function addGarage($key, Garage $stellplatz)
@@ -3425,8 +3262,7 @@ class Realty
     }
 
     /**
-     * @param bool $buyOnRequest
-     *
+     * @param  bool  $buyOnRequest
      * @return $this
      */
     public function setBuyOnRequest($buyOnRequest)
@@ -3462,8 +3298,8 @@ class Realty
             $group = 'other';
         }
 
-        if (!isset($this->pois[$group])) {
-            $this->pois[$group] = array();
+        if (! isset($this->pois[$group])) {
+            $this->pois[$group] = [];
         }
 
         $this->pois[$group][$name] = $distance;
@@ -3472,8 +3308,7 @@ class Realty
     }
 
     /**
-     * @param float $kaltmiete
-     *
+     * @param  float  $kaltmiete
      * @return $this
      */
     public function setTotalRentWithoutHeating($kaltmiete)

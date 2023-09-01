@@ -34,7 +34,7 @@ class ListPager extends \ArrayObject
      */
     public function haveToPaginate()
     {
-        return (($this->getMaxPerPage() != 0) && ($this->getNbResults() > $this->getMaxPerPage()));
+        return ($this->getMaxPerPage() != 0) && ($this->getNbResults() > $this->getMaxPerPage());
     }
 
     /**
@@ -60,14 +60,13 @@ class ListPager extends \ArrayObject
     /**
      * gets the nearest pages from current page
      *
-     * @param int $nb_links
-     *
+     * @param  int  $nb_links
      * @return array
      */
     public function getLinks($nb_links = 5)
     {
-        $links = array();
-        $tmp   = $this->page - floor($nb_links / 2);
+        $links = [];
+        $tmp = $this->page - floor($nb_links / 2);
         $check = $this->getLastPage() - $nb_links + 1;
         $limit = ($check > 0) ? $check : 1;
         $begin = ($tmp > 0) ? (($tmp > $limit) ? $limit : $tmp) : 1;
@@ -105,10 +104,10 @@ class ListPager extends \ArrayObject
     }
 
     /**
-     * @param int $maxPerPage
+     * @param  int  $maxPerPage
+     * @return $this
      *
      * @throws \InvalidArgumentException
-     * @return $this
      */
     public function setMaxPerPage($maxPerPage)
     {
@@ -122,8 +121,7 @@ class ListPager extends \ArrayObject
     }
 
     /**
-     * @param int $nbResults
-     *
+     * @param  int  $nbResults
      * @return $this
      */
     public function setNbResults($nbResults)
@@ -134,8 +132,7 @@ class ListPager extends \ArrayObject
     }
 
     /**
-     * @param int $page
-     *
+     * @param  int  $page
      * @return $this
      */
     public function setPage($page)
@@ -148,21 +145,20 @@ class ListPager extends \ArrayObject
     /**
      * converts the data into a key/value store array
      *
-     * @param $keyGetter
-     * @param $valueGetter
      *
      * @return array
+     *
      * @throws \Justimmo\Exception\MethodNotFoundException
      */
     public function toKeyValue($keyGetter, $valueGetter)
     {
-        $return = array();
+        $return = [];
         foreach ($this as $value) {
-            if (!method_exists($value, $keyGetter)) {
-                throw new MethodNotFoundException('Method ' . $keyGetter . ' not found on ' . get_class($value));
+            if (! method_exists($value, $keyGetter)) {
+                throw new MethodNotFoundException('Method '.$keyGetter.' not found on '.get_class($value));
             }
-            if (!method_exists($value, $valueGetter)) {
-                throw new MethodNotFoundException('Method ' . $valueGetter . ' not found on ' . get_class($value));
+            if (! method_exists($value, $valueGetter)) {
+                throw new MethodNotFoundException('Method '.$valueGetter.' not found on '.get_class($value));
             }
             $return[$value->$keyGetter()] = $value->$valueGetter();
         }

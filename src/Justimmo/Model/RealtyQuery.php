@@ -1,12 +1,11 @@
 <?php
+
 namespace Justimmo\Model;
 
 use Justimmo\Model\Query\AbstractQuery;
-use Justimmo\Tests\Model\ProjectQueryTest;
 
 /**
  * Class RealtyQuery
- * @package Justimmo\Model
  *
  * @method Realty findPk($pk)
  * @method Realty|null findOne($pk)
@@ -56,7 +55,7 @@ use Justimmo\Tests\Model\ProjectQueryTest;
 class RealtyQuery extends AbstractQuery
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getListCall()
     {
@@ -64,7 +63,7 @@ class RealtyQuery extends AbstractQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getDetailCall()
     {
@@ -72,7 +71,7 @@ class RealtyQuery extends AbstractQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdsCall()
     {
@@ -82,8 +81,7 @@ class RealtyQuery extends AbstractQuery
     /**
      * Api only accepts english updated_at fieldname for ordering
      *
-     * @param string $direction
-     *
+     * @param  string  $direction
      * @return RealtyQuery
      */
     public function orderByUpdatedAt($direction = 'asc')
@@ -94,8 +92,7 @@ class RealtyQuery extends AbstractQuery
     /**
      * Return all project realties regardless of realty state (active, inactive, draft,...)
      *
-     * @param bool $all
-     *
+     * @param  bool  $all
      * @return $this
      */
     public function allProjectRealties($all = true)
@@ -106,8 +103,7 @@ class RealtyQuery extends AbstractQuery
     /**
      * Search commercial realties by usable area of the sub realties
      *
-     * @param bool $all
-     *
+     * @param  bool  $all
      * @return $this
      */
     public function preciseAreaSearch($all = true)

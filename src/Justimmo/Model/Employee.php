@@ -17,7 +17,7 @@ class Employee
     /**
      * @var array
      */
-    protected $attachments = array();
+    protected $attachments = [];
 
     /**
      * @var null|string
@@ -95,8 +95,7 @@ class Employee
     protected $url = null;
 
     /**
-     * @param array $attachments
-     *
+     * @param  array  $attachments
      * @return $this
      */
     public function setAttachments($attachments)
@@ -115,8 +114,6 @@ class Employee
     }
 
     /**
-     * @param null $email
-     *
      * @return $this
      */
     public function setEmail($email)
@@ -126,17 +123,12 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
     /**
-     * @param null $fax
-     *
      * @return $this
      */
     public function setFax($fax)
@@ -146,17 +138,12 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getFax()
     {
         return $this->fax;
     }
 
     /**
-     * @param null $handy
-     *
      * @return $this
      */
     public function setMobile($handy)
@@ -166,17 +153,13 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getMobile()
     {
         return $this->mobile;
     }
 
     /**
-     * @param mixed $id
-     *
+     * @param  mixed  $id
      * @return $this
      */
     public function setId($id)
@@ -195,8 +178,6 @@ class Employee
     }
 
     /**
-     * @param null $category
-     *
      * @return $this
      */
     public function setCategory($category)
@@ -206,17 +187,12 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getCategory()
     {
         return $this->category;
     }
 
     /**
-     * @param null $nachname
-     *
      * @return $this
      */
     public function setLastName($nachname)
@@ -226,17 +202,12 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getLastName()
     {
         return $this->lastName;
     }
 
     /**
-     * @param null $position
-     *
      * @return $this
      */
     public function setPosition($position)
@@ -246,17 +217,12 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getPosition()
     {
         return $this->position;
     }
 
     /**
-     * @param null $tel
-     *
      * @return $this
      */
     public function setPhone($tel)
@@ -266,17 +232,12 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getPhone()
     {
         return $this->phone;
     }
 
     /**
-     * @param null $vorname
-     *
      * @return $this
      */
     public function setFirstName($vorname)
@@ -286,28 +247,23 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getFirstName()
     {
         return $this->firstName;
     }
 
     /**
-     * @param      $type
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return array
      */
     public function getAttachmentsByType($type, $group = false)
     {
-        $attachments = array();
+        $attachments = [];
 
         /** @var \Justimmo\Model\Attachment $attachment */
         foreach ($this->attachments as $attachment) {
             if ($attachment->getType() == $type && ($group === false || $group == $attachment->getGroup())) {
-                $attachments[] =  $attachment;
+                $attachments[] = $attachment;
             }
         }
 
@@ -315,8 +271,7 @@ class Employee
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return Attachment[]
      */
     public function getPictures($group = false)
@@ -325,8 +280,7 @@ class Employee
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return Attachment[]
      */
     public function getVideos($group = false)
@@ -335,8 +289,7 @@ class Employee
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return Attachment[]
      */
     public function getDocuments($group = false)
@@ -345,8 +298,7 @@ class Employee
     }
 
     /**
-     * @param null|string|boolean $group
-     *
+     * @param  null|string|bool  $group
      * @return Attachment[]
      */
     public function getLinks($group = false)
@@ -363,12 +315,10 @@ class Employee
     {
         $profilePictures = $this->getAttachmentsByType('picture', 'PROFILBILD');
 
-        return !empty($profilePictures) ? $profilePictures[0] : null;
+        return ! empty($profilePictures) ? $profilePictures[0] : null;
     }
 
     /**
-     * @param Attachment $attachment
-     *
      * @return $this
      */
     public function addAttachment(Attachment $attachment)
@@ -379,8 +329,6 @@ class Employee
     }
 
     /**
-     * @param null $title
-     *
      * @return $this
      */
     public function setTitle($title)
@@ -390,25 +338,17 @@ class Employee
         return $this;
     }
 
-    /**
-     * @return null
-     */
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * @return null
-     */
     public function getSuffix()
     {
         return $this->suffix;
     }
 
     /**
-     * @param null $suffix
-     *
      * @return $this
      */
     public function setSuffix($suffix)
@@ -427,8 +367,7 @@ class Employee
     }
 
     /**
-     * @param null|string $biography
-     *
+     * @param  null|string  $biography
      * @return $this
      */
     public function setBiography($biography)
@@ -447,7 +386,7 @@ class Employee
     }
 
     /**
-     * @param null|string $number
+     * @param  null|string  $number
      */
     public function setNumber($number)
     {
@@ -463,7 +402,7 @@ class Employee
     }
 
     /**
-     * @param null|string $street
+     * @param  null|string  $street
      */
     public function setStreet($street)
     {
@@ -479,7 +418,7 @@ class Employee
     }
 
     /**
-     * @param null|string $postal
+     * @param  null|string  $postal
      */
     public function setPostal($postal)
     {
@@ -495,7 +434,7 @@ class Employee
     }
 
     /**
-     * @param null|string $city
+     * @param  null|string  $city
      */
     public function setCity($city)
     {
@@ -511,7 +450,7 @@ class Employee
     }
 
     /**
-     * @param null|string $url
+     * @param  null|string  $url
      */
     public function setUrl($url)
     {

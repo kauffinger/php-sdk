@@ -9,7 +9,7 @@ use Justimmo\Model\Wrapper\WrapperInterface;
 
 abstract class AbstractQuery implements QueryInterface
 {
-    protected $pictureSizes = array(
+    protected $pictureSizes = [
         'small',
         's220x155',
         's312x208',
@@ -26,12 +26,12 @@ abstract class AbstractQuery implements QueryInterface
         'orig',
         'user_small',
         'user_medium',
-    );
+    ];
 
     /**
      * @var array
      */
-    protected $params = array();
+    protected $params = [];
 
     /**
      * @var JustimmoApiInterface
@@ -69,16 +69,11 @@ abstract class AbstractQuery implements QueryInterface
      */
     abstract public function getIdsCall();
 
-    /**
-     * @param JustimmoApiInterface                     $api
-     * @param \Justimmo\Model\Wrapper\WrapperInterface $wrapper
-     * @param \Justimmo\Model\Mapper\MapperInterface   $mapper
-     */
     public function __construct(JustimmoApiInterface $api, WrapperInterface $wrapper, MapperInterface $mapper)
     {
-        $this->api     = $api;
+        $this->api = $api;
         $this->wrapper = $wrapper;
-        $this->mapper  = $mapper;
+        $this->mapper = $mapper;
     }
 
     /**
@@ -88,15 +83,14 @@ abstract class AbstractQuery implements QueryInterface
      */
     public function clear()
     {
-        $this->params = array();
+        $this->params = [];
 
         return $this;
     }
 
     /**
-     * @param int $page
-     * @param int $maxPerPage
-     *
+     * @param  int  $page
+     * @param  int  $maxPerPage
      * @return \Justimmo\Pager\ListPager
      */
     public function paginate($page = 1, $maxPerPage = 10)
@@ -117,7 +111,7 @@ abstract class AbstractQuery implements QueryInterface
      */
     public function find()
     {
-        $method   = $this->getListCall();
+        $method = $this->getListCall();
         $response = $this->api->$method($this->params);
 
         $return = $this->wrapper->transformList($response);
@@ -139,13 +133,12 @@ abstract class AbstractQuery implements QueryInterface
     }
 
     /**
-     * @param int $pk
-     *
+     * @param  int  $pk
      * @return \Justimmo\Model\Realty|\Justimmo\Model\Employee|\Justimmo\Model\Project
      */
     public function findPk($pk)
     {
-        $params = array();
+        $params = [];
         if (isset($this->params['picturesize'])) {
             $params['picturesize'] = $this->params['picturesize'];
         }
@@ -153,7 +146,7 @@ abstract class AbstractQuery implements QueryInterface
             $params['alleProjektObjekte'] = $this->params['alleProjektObjekte'];
         }
 
-        $method   = $this->getDetailCall();
+        $method = $this->getDetailCall();
         $response = $this->api->$method($pk, $params);
 
         $return = $this->wrapper->transformSingle($response);
@@ -170,7 +163,7 @@ abstract class AbstractQuery implements QueryInterface
      */
     public function findIds()
     {
-        $method   = $this->getIdsCall();
+        $method = $this->getIdsCall();
         $response = $this->api->$method($this->params);
 
         return json_decode($response);
@@ -179,7 +172,6 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * sets the limit parameter
      *
-     * @param $limit
      *
      * @return $this
      */
@@ -191,7 +183,6 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * sets the offset parameter
      *
-     * @param $offset
      *
      * @return mixed
      */
@@ -203,9 +194,8 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * translates and sets the order of a call
      *
-     * @param string $column
-     * @param string $direction
-     *
+     * @param  string  $column
+     * @param  string  $direction
      * @return $this
      */
     public function orderBy($column, $direction = 'asc')
@@ -216,9 +206,8 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * sets order for a call
      *
-     * @param string $column
-     * @param string $direction
-     *
+     * @param  string  $column
+     * @param  string  $direction
      * @return $this
      */
     public function order($column, $direction = 'asc')
@@ -232,8 +221,6 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * sets a value for a key
      *
-     * @param $key
-     * @param $value
      *
      * @return $this
      */
@@ -247,8 +234,6 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * adds a filter column
      *
-     * @param      $key
-     * @param null $value
      *
      * @return $this
      */
@@ -260,10 +245,10 @@ abstract class AbstractQuery implements QueryInterface
 
         if (is_array($value)) {
             if (array_key_exists('min', $value)) {
-                $this->params['filter'][$key . '_von'] = $value['min'];
+                $this->params['filter'][$key.'_von'] = $value['min'];
             }
             if (array_key_exists('max', $value)) {
-                $this->params['filter'][$key . '_bis'] = $value['max'];
+                $this->params['filter'][$key.'_bis'] = $value['max'];
             }
 
             if (array_key_exists('min', $value) || array_key_exists('max', $value)) {
@@ -279,10 +264,9 @@ abstract class AbstractQuery implements QueryInterface
     /**
      * magic call
      *
-     * @param $method
-     * @param $params
      *
      * @return mixed
+     *
      * @throws \Justimmo\Exception\MethodNotFoundException
      */
     public function __call($method, $params)
@@ -296,14 +280,14 @@ abstract class AbstractQuery implements QueryInterface
         if (mb_strpos($method, 'orderBy') === 0 && count($params) <= 1) {
             $key = $this->mapper->getFilterPropertyName(mb_substr($method, 7));
 
-            if (empty($params[0]) || !in_array($params[0], array('asc', 'desc'))) {
+            if (empty($params[0]) || ! in_array($params[0], ['asc', 'desc'])) {
                 $params[0] = 'asc';
             }
 
             return $this->order($key, $params[0]);
         }
 
-        throw new MethodNotFoundException('The method ' . $method . ' was not found in ' . get_class($this));
+        throw new MethodNotFoundException('The method '.$method.' was not found in '.get_class($this));
     }
 
     /**
@@ -315,18 +299,17 @@ abstract class AbstractQuery implements QueryInterface
     }
 
     /**
-     * @param string|array $picturesize
-     *
+     * @param  string|array  $picturesize
      * @return $this
      */
     public function setPicturesize($picturesize)
     {
-        if (!is_array($picturesize)) {
-            $picturesize = array($picturesize);
+        if (! is_array($picturesize)) {
+            $picturesize = [$picturesize];
         }
 
         foreach ($picturesize as $size) {
-            if (!in_array($size, $this->pictureSizes)) {
+            if (! in_array($size, $this->pictureSizes)) {
                 $picturesize[] = 'medium';
             }
         }

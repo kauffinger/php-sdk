@@ -2,12 +2,12 @@
 
 namespace Justimmo\Model\Wrapper\V1;
 
+use Justimmo\Model\AdditionalCosts;
 use Justimmo\Model\Attachment;
 use Justimmo\Model\EnergyPass;
+use Justimmo\Model\Garage;
 use Justimmo\Model\Mapper\V1\EmployeeMapper;
 use Justimmo\Model\Realty;
-use Justimmo\Model\AdditionalCosts;
-use Justimmo\Model\Garage;
 use Justimmo\Pager\ListPager;
 
 class RealtyWrapper extends AbstractWrapper
@@ -17,7 +17,7 @@ class RealtyWrapper extends AbstractWrapper
      *
      * @var array
      */
-    protected $simpleMapping = array(
+    protected $simpleMapping = [
         'id',
         'objektnummer',
         'titel',
@@ -53,9 +53,9 @@ class RealtyWrapper extends AbstractWrapper
         'vermittelt_am',
         'erstellt_am',
         'aktualisiert_am',
-    );
+    ];
 
-    protected $geoMapping = array(
+    protected $geoMapping = [
         'ort',
         'plz',
         'regionaler_zusatz',
@@ -69,9 +69,9 @@ class RealtyWrapper extends AbstractWrapper
         'tuernummer',
         'hausnummer',
         'stiege',
-    );
+    ];
 
-    protected $preisMapping = array(
+    protected $preisMapping = [
         'kaufpreis',
         'kaufpreisnetto',
         'kaltmiete',
@@ -93,9 +93,9 @@ class RealtyWrapper extends AbstractWrapper
         'betriebskosten_pro_qm',
         'freitext_preis',
         'erschliessungskosten',
-    );
+    ];
 
-    protected $flaechenMapping = array(
+    protected $flaechenMapping = [
         'nutzflaeche',
         'teilbar_ab',
         'grundflaeche',
@@ -126,14 +126,14 @@ class RealtyWrapper extends AbstractWrapper
         'verbaubare_flaeche',
         'verkaufsflaeche',
         'raumhoehe',
-    );
+    ];
 
-    protected $energyMapping = array(
+    protected $energyMapping = [
         'epass_hwbwert',
         'epass_hwbklasse',
         'epass_fgeewert',
         'epass_fgeeklasse',
-    );
+    ];
 
     public function transformList($data)
     {
@@ -156,8 +156,6 @@ class RealtyWrapper extends AbstractWrapper
     }
 
     /**
-     * @param $data
-     *
      * @return Realty
      */
     public function transformSingle($data)
@@ -241,7 +239,7 @@ class RealtyWrapper extends AbstractWrapper
                     $attributes = $this->attributesToArray($kategorie);
 
                     if (array_key_exists('id', $attributes)) {
-                        $objekt->addCategory($attributes['id'], (string)$kategorie);
+                        $objekt->addCategory($attributes['id'], (string) $kategorie);
                     }
                 }
             }
@@ -277,8 +275,8 @@ class RealtyWrapper extends AbstractWrapper
 
             if (isset($xml->geo->geokoordinaten)) {
                 $coord = $this->attributesToArray($xml->geo->geokoordinaten->attributes());
-                $objekt->setLatitude((double) $coord['breitengrad']);
-                $objekt->setLongitude((double) $coord['laengengrad']);
+                $objekt->setLatitude((float) $coord['breitengrad']);
+                $objekt->setLongitude((float) $coord['laengengrad']);
             }
 
             if (isset($xml->geo->land)) {
@@ -297,7 +295,7 @@ class RealtyWrapper extends AbstractWrapper
                     foreach ($anyField->ji_point_of_interest_distance->distance as $distance) {
                         $distanceAttr = $this->attributesToArray($distance->attributes());
 
-                        $objekt->addPoi($distanceAttr['group'], $distanceAttr['type'], (float)$distance);
+                        $objekt->addPoi($distanceAttr['group'], $distanceAttr['type'], (float) $distance);
                     }
                 }
             }
@@ -335,7 +333,7 @@ class RealtyWrapper extends AbstractWrapper
             if (isset($xml->preise->zusatzkosten)) {
                 foreach ($xml->preise->zusatzkosten[0] as $key => $zusatzkosten) {
                     $name = isset($zusatzkosten->name) ? $zusatzkosten->name : $key;
-                    $costs = new AdditionalCosts((string) $name, (double) $zusatzkosten->brutto, (double) $zusatzkosten->netto, (double) $zusatzkosten->ust, (string) $zusatzkosten->ust_typ, (double) $zusatzkosten->ust_berechneter_wert, (double) $zusatzkosten->ust_wert);
+                    $costs = new AdditionalCosts((string) $name, (float) $zusatzkosten->brutto, (float) $zusatzkosten->netto, (float) $zusatzkosten->ust, (string) $zusatzkosten->ust_typ, (float) $zusatzkosten->ust_berechneter_wert, (float) $zusatzkosten->ust_wert);
 
                     if (isset($zusatzkosten->optional)) {
                         $costs->setOptional(filter_var((string) $zusatzkosten->optional, FILTER_VALIDATE_BOOLEAN));
@@ -349,7 +347,7 @@ class RealtyWrapper extends AbstractWrapper
                 $key = 0;
 
                 foreach ($xml->preise->stellplaetze[0] as $stellplaetz) {
-                    $garage = new Garage((string) $stellplaetz->art, (string) $stellplaetz->name, (int) $stellplaetz->anzahl, (string) $stellplaetz->vermarktungsart, (double) $stellplaetz->brutto, (double) $stellplaetz->netto, (double) $stellplaetz->ust, (string) $stellplaetz->ust_typ, (double) $stellplaetz->ust_wert);
+                    $garage = new Garage((string) $stellplaetz->art, (string) $stellplaetz->name, (int) $stellplaetz->anzahl, (string) $stellplaetz->vermarktungsart, (float) $stellplaetz->brutto, (float) $stellplaetz->netto, (float) $stellplaetz->ust, (string) $stellplaetz->ust_typ, (float) $stellplaetz->ust_wert);
 
                     $objekt->addGarage($key, $garage);
 
@@ -433,13 +431,13 @@ class RealtyWrapper extends AbstractWrapper
             if (isset($xml->ausstattung[0])) {
                 /** @var \SimpleXMLElement $element */
                 foreach ($xml->ausstattung[0] as $key => $element) {
-                    if ((string) $element === "true" || (int) $element === 1) {
+                    if ((string) $element === 'true' || (int) $element === 1) {
                         $objekt->addEquipment($key, $key);
                     } elseif ($element->attributes()->count()) {
                         $attributes = $this->attributesToArray($element);
-                        $value      = array();
+                        $value = [];
                         foreach ($attributes as $k => $v) {
-                            if ($v === "true" || $v == 1) {
+                            if ($v === 'true' || $v == 1) {
                                 $value[] = $k;
                             } else {
                                 $value[$k] = $v;
@@ -462,11 +460,8 @@ class RealtyWrapper extends AbstractWrapper
         return $objekt;
     }
 
-    /**
-     * @param \SimpleXMLElement $simpleField
-     * @param $model
-     */
-    protected function mapSimpleField(\SimpleXMLElement $simpleField, $model) {
+    protected function mapSimpleField(\SimpleXMLElement $simpleField, $model)
+    {
         $attributes = $this->attributesToArray($simpleField);
         if (array_key_exists('feldname', $attributes)) {
             $setter = $this->mapper->getSetter($attributes['feldname']);
